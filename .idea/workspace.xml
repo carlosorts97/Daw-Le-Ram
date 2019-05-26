@@ -2,6 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="115e636a-2d69-48a6-8c15-a2b4f72c362b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/sticky-footer-navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/camisetaPrueba.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/lupa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/sneaker.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/bootstrap-tagsinput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/PruebaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Articles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Brands.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Cities.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Countries.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/CreditCard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Images.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Reports.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Sells.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Sizes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Stock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Tracking.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/User2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ArticleType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/BrandType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CategoryType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/EditUserType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ImageType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/NewArticleType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/NewSizeType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ArticlesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/BrandRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CitiesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CommentRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CountriesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CreditCardRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ImagesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/PostRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ReportsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/SellsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/SizesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/StockRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/TagRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/TrackingRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UsersRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/editUser.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/newUser.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/article.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/home/home.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/prueba/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/login.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/regform.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/showArticles.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users/editinfo.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/users/regform.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../A1" beforeDir="false" afterPath="$PROJECT_DIR$/../A1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../A2Cookies/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/../A2Cookies/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../A2Cookies/pag2.php" beforeDir="false" afterPath="$PROJECT_DIR$/../A2Cookies/pag2.php" afterDir="false" />
@@ -15,7 +93,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="DatabaseView">
@@ -42,8 +120,9 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="1" />
+          <entry key="project.open.time.123" value="1" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -79,15 +158,12 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
-              <folding>
-                <element signature="e#34#58#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -202,6 +278,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,7 +312,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,24 +357,20 @@
       <option name="presentableId" value="Default" />
       <updated>1558878542946</updated>
       <workItem from="1558878548598" duration="4903000" />
+      <workItem from="1558887050500" duration="714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4903000" />
+    <option name="totallyTimeSpent" value="5617000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1560" height="736" extended-state="6" />
+    <frame x="0" y="0" width="1552" height="732" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18791501" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19057105" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32842106" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.15920398" />
@@ -306,10 +378,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" visible="true" weight="0.08897743" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32842106" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.08897743" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,11 +441,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
         </state>
       </provider>
     </entry>
