@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Articles
@@ -71,7 +72,10 @@ class Articles
     private $sell;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="article")
+     * @ORM\Column(name="image", type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/png" })
      */
     private $image;
 
@@ -81,7 +85,7 @@ class Articles
     public function __construct()
     {
         $this->sell = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->image = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     public function getIdArticle(): ?int
@@ -177,15 +181,15 @@ class Articles
         return $this;
     }
 
-    public function getImage(): Collection
+    public function getImage()
     {
         return $this->image;
     }
-    public function setImage(Images $image): self
+    public function setImage($image): self
     {
-        if (!$this->image->contains($image)) {
-            $this->image[] = $image;
-        }
+
+            $this->image = $image;
+
         return $this;
     }
 
