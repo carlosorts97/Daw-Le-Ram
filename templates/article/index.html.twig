@@ -20,10 +20,12 @@
                         <div class="btn btn-light align-self-center">
                             {{ category.name }}
                         </div>
-                        >
+                        {% if brand !=null %}
+                            >
                         <div class="btn btn-light align-self-center">
-                                {{ brand.name }}
+                            {{ brand.name }}
                         </div>
+                        {% endif %}
                     </div>
                     <div class="col-lg-6 text-right border-bottom">
                         <select class="selectpicker" data-live-search="true">
@@ -36,6 +38,7 @@
                     {% for article in articles %}
                         <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
                             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+                            <p class="text-center">{{ article.image}}</p>
                             <p class="text-center">{{ article.name}}</p>
                             <p class="text-center">{{ article.price | number_format}}€</p>
                         </div>

@@ -30,21 +30,22 @@ class PruebaController extends AbstractController
         $conn = $em->getConnection();
         if ($brand == 0) {
             $sql = '
-            SELECT name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price from articles
+            SELECT name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+            from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
             WHERE category=' . $category . '
-            GROUP BY articles.retail_date, articles.name,category,brand
+            GROUP BY articles.retail_date, articles.name,category,brand,image
             ';
             $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
             $brand=null;
         }
         else{
             $sql = '
-            SELECT name,articles.retail_date,articles.name,category,brand, AVG(sizes.price) AS price 
+            SELECT name,articles.retail_date,articles.name,category,brand, AVG(sizes.price) AS price,image
             From articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
             WHERE category=' . $category . ' AND brand='.$brand.'
-            GROUP BY articles.retail_date, articles.name,category,brand
+            GROUP BY articles.retail_date, articles.name,category,brand,image
             ';
             $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
             $brand = $this->getDoctrine()->getRepository(Brands::class)->find($brand);
@@ -71,30 +72,76 @@ class PruebaController extends AbstractController
         $sneakers_hyped = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('category'=>['4']),array('idArticle'=>'DESC'),3);
         $sneakers_last = $this->getDoctrine()->getRepository(Articles::class)->findBy(array('category'=>['4']),array('retailDate'=>'DESC'),3);
         $tallas = $this->getDoctrine()->getRepository(Sizes::class)->findBy(array('article'=>2));
-        dump($tallas);
-        die();
-        $category = 2;
+
 
         $em = $this->getDoctrine()->getEntityManager();
         $conn = $em->getConnection();
+        /*-----------------------------------------CONSULTAS----------------------------------------------------*/
+        /*STREETWEAR*/
         $sql = '
-        SELECT name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) from articles
-        LEFT JOIN sizes ON articles.id_article = sizes.article
-        WHERE category='.$category.'
-        GROUP BY articles.retail_date, articles.name,category,brand
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        INNER JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=1 OR category=2 OR category=3 OR category=5  
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY articles.retail_date DESC
+        LIMIT 3
         ';
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $articles= $stmt->fetchAll();
-        dump($articles);
-        die();
+        $stHype= $stmt->fetchAll();
+
+        $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        INNER JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=1 OR category=2 OR category=3 OR category=5 
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY articles.retail_date DESC
+        LIMIT 3
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $stLast= $stmt->fetchAll();
+
+        /*SNEAKERS*/
+        $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        INNER JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=4  
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY articles.retail_date DESC
+        LIMIT 3
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $snkHype= $stmt->fetchAll();
+
+        $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        INNER JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=4
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY articles.retail_date DESC
+        LIMIT 3
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $snkLast= $stmt->fetchAll();
+        /*-----------------------------------------CONSULTAS----------------------------------------------------*/
+
 
         return $this->render('home/home.html.twig', [
-            'streetWear_hyped' => $streetWear_hyped,
-            'streetWear_last' => $streetWear_last,
-            'sneakers_hyped' => $sneakers_hyped,
-            'sneakers_last' => $sneakers_last
+            'stHype' => $stHype,
+            'stLast' => $stLast,
+            'snkHype' => $snkHype,
+            'snkLast' => $snkLast
         ]);
     }
 }
