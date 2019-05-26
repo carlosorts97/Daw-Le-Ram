@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Le-Ram{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+<header>
+    <div class="cabecera navbar-expand-lg border-bottom fixed-top active mb-5 pb-3">
+        <div class="row text-center align-items-center">
+            <div class="col-3 col-md-3 col-lg-3 text-left">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-6 text-center link">
+                <h3 class="offset-4 offset-md-4 offset-lg-5 logo text-center">
+                    <a href="{{ path('app_homepage') }}">Le-Ram</a>
+                </h3>
+            </div>
+
+            <div id="login" class="col-3 col-md-3 col-lg-3 text-right align-self-start pr-3">
+                {% if app.user == null %}
+                    <a class="login col-12" href="{{ path('app_login') }}">Login</a>
+                    <a class="login col-12" href="{{ path('app_register') }}">Register</a>
+                {% else %}
+                    <ul class="hidden-md-down login">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle btn btn-secondary btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user">  </span> {{ app.user.username }}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="login">
+                                <a class="dropdown-item" href="">Mis pedidos</a>
+                                <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="">Admin</a>
+                                {% endif %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="">
+                                    Cerrar Sesion <i class="fa fa-times" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
+            <div id="categorias" class="col-12 col-md-3 col-lg-3 signika">
+
+                <div class="dropdown show">
+                    <a class="btn btn-lg btn-navegar signika dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                    </a>
+
+                    <div class="dropdown-menu dropright border-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-submenu dropleft "><a class="dropdown-item dropdown-toggle btn" href="#">Tops</a>
+                            <div class="dropdown-menu dropleft border-right">
+                                <a class="dropdown-item btn" href="#">Todas</a>
+                                <a class="dropdown-item btn" href="#">Supreme</a>
+                                <a class="dropdown-item btn" href="#">Off-white</a>
+                                <a class="dropdown-item btn" href="#">Gucci</a>
+                                <a class="dropdown-item btn" href="#">Resto de marcas</a>
+                            </div>
+                        </a>
+                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item btn" href="#">Todas</a>
+                                <a class="dropdown-item btn" href="#">Supreme</a>
+                                <a class="dropdown-item btn" href="#">Off-white</a>
+                                <a class="dropdown-item btn" href="#">Gucci</a>
+                                <a class="dropdown-item btn" href="#">Resto de marcas</a>
+                            </div>
+                        </a>
+                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item btn" href="#">Todas</a>
+                                <a class="dropdown-item btn" href="#">Supreme</a>
+                                <a class="dropdown-item btn" href="#">Off-white</a>
+                                <a class="dropdown-item btn" href="#">Gucci</a>
+                                <a class="dropdown-item btn" href="#">Resto de marcas</a>
+                            </div>
+                        </a>
+                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item btn" href="#">Todas</a>
+                                <a class="dropdown-item btn" href="#">Nike</a>
+                                <a class="dropdown-item btn" href="#">Off-white</a>
+                                <a class="dropdown-item btn" href="#">Adidas</a>
+                                <a class="dropdown-item btn" href="#">Resto de marcas</a>
+                            </div>
+                        </a>
+                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item btn" href="#">Todas</a>
+                                <a class="dropdown-item btn" href="#">Supreme</a>
+                                <a class="dropdown-item btn" href="#">Off-white</a>
+                                <a class="dropdown-item btn" href="#">Gucci</a>
+                                <a class="dropdown-item btn" href="#">Resto de marcas</a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center" id="buscador">
+                <form class="buscador form-inline mt-md-0 justify-content-center">
+                    <input class="form-control col-12 col-md-6" type="text" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-default btn-lg col-12 col-md-1 lupa">
+                        <img src="img/lupa.png" height="26px">
+                    </button>
+                </form>
+            </div>
+            <div id="vender" class="col-12 col-md-3 col-lg-3 text-center">
+                <a class="btn btn-lg btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% block body %}{% endblock %}
+<footer>
+    <div>
+        <div class="row">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                <h4>Ayuda</h4>
+                <p>Devoluciones</p>
+                <p>Como detectar fakes</p>
+                <p>Condiciones de venta</p>
+                <p>Sobre la empresa</p>
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                <h4>Contactar</h4>
+                <p>Politica de privacidad</p>
+                <p>Política de cookies</p>
+                <p>Preguntas frecuentes</p>
+            </div>
+            <div class="col-4 col-sm-4 col-md-4 col-lg-4 ">
+                <div class="row col-6">
+                    <i class="fa fa-instagram col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                    <i class="fa fa-facebook col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                    <i class="fa fa-twitter col-4 col-sm-4 col-md-4 col-lg-4" style="font-size:26px" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% block footer %}{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>
+
+        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+            if (!$(this).next().hasClass('show')) {
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            var $subMenu = $(this).next(".dropdown-menu");
+            $subMenu.toggleClass('show');
+
+
+            $(this).parents('dropdown.show').on('hidden.bs.dropdown', function(e) {
+                $('.dropdown-submenu .show').removeClass("show");
+            });
+
+            return false;
+        });
+
+        $(window).ready(function(){
+            if ($(window).width() <= 800){
+                $(".btn").addClass("btn-sm");
+                $(".login").addClass("font-sm")
+                $("#login").addClass("align-self-center")
+                $("#categorias").addClass("text-left")
+                $("#vender .btn").addClass("col-4")
+
+            } else{
+                $(".btn").removeClass("btn-sm");
+                $(".login").removeClass("font-sm")
+                $("#login").removeClass("align-self-center")
+                $("#categorias").removeClass("text-left")
+                $("#vender .btn").removeClass("col-4")
+            }
+        });
+
+        $(window).resize(function(){
+            if ($(window).width() <= 800){
+                $(".btn").addClass("btn-sm");
+                $(".login").addClass("font-sm")
+                $("#login").addClass("align-self-center")
+                $("#categorias").addClass("text-left")
+                $("#vender .btn").addClass("col-4")
+
+            } else{
+                $(".btn").removeClass("btn-sm");
+                $(".login").removeClass("font-sm")
+                $("#login").removeClass("align-self-center")
+                $("#categorias").removeClass("text-left")
+                $("#vender .btn").removeClass("col-4")
+            }
+        });
+    </script>
+{% endblock %}
+</body>
+</html>

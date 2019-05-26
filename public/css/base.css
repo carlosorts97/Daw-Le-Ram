@@ -1,0 +1,212 @@
+html{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+.cabecera{
+    width: 100%;
+    padding: 15px;
+    color: white;
+    font-family: 'Secular One', sans-serif;
+    background-color: #222222;
+    -webkit-transition: all ease-out .5s;
+    -moz-transition: all ease-out .5s;
+    -o-transition: all ease-out .5s;
+    transition: all ease-out .5s;
+    margin-bottom: 10px;
+    border-bottom: 1px darkgrey solid ;
+}
+/*Active es la clase que se usa para cambiar la apariencia de la cabecera cuando hacemos scroll*/
+.active{
+    background-color: white;
+}
+.active form{
+    margin-bottom: 0px;
+}
+
+.active .row div{
+    border:1px solid white;
+}
+.active .row{
+}
+
+.active .logo{
+    background-color:#7A306C;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    width: 55px;
+    text-decoration: none;
+    color: white;
+}
+
+.active .logo:focus{
+    text-decoration: none;
+}
+
+.active .logo a{
+    text-decoration: none;
+    color: white;
+}
+
+.active .icono{
+    display: none;
+}
+
+.active .login{
+    color: #222222;
+}
+
+.active .buscador input{
+    height: 30px;
+}
+
+.active .lupa{
+    height: 30px;
+}
+
+.active .lupa img{
+    height: 20px;
+    display:block;
+    margin:auto;
+}
+/*---------------------------------------END ACTIVE--------------------------------*/
+.cabecera .row div{
+}
+.cabecera .row{
+    margin-bottom: 0px;
+}
+.primera{
+    height:120px;
+}
+.lupa{
+    padding:3.5px;
+    background-color: #7A306C;
+    border-radius:0px;
+}
+.login:hover{
+    text-decoration: none;
+    color:darkgrey;
+}
+.login{
+    color:white;
+}
+
+.logo{
+    font-size: 46px;
+    margin-bottom: 20px;
+}
+
+.login:hover{
+    text-decoration: none;
+    color: darkgrey;
+}
+.form-control{
+    border-radius: 0px;
+}
+.btn-navegar{
+    background-color: #7A306C;
+    color: white;
+}
+
+.btn-navegar:hover{
+    background-color: darkslateblue;
+    color: white;
+}
+
+.signika{
+    font-family: 'Signika', sans-serif;
+}
+.font-sm{
+    font-size: 15px;
+    text-align: left;
+}
+.margin_scroll{
+    margin-top:200px;
+}
+
+li{
+    list-style: none;
+}
+footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #3C362A;
+    text-align: center;
+    color:white;
+    font-size: 10px;
+    margin-top: 20px;
+}
+footer h4{
+    font-size: 16px;
+}
+footer p{
+    margin: 0px;
+}
+
+form{
+    margin-bottom: 50px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 10%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.dropdown-item{
+    border: 3px solid white;
+}
+
+.dropdown-item:hover{
+    border-right: 3px solid #7A306C;
+}
+
+@media only screen and (max-width: 600px) {
+    .dropdown-item {
+        font-size:12px;
+    }
+}
