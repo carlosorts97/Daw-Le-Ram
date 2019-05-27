@@ -152,7 +152,6 @@ class AdminController extends AbstractController
             /** @var File $file */
             $file = $article->getImage();
 
-
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             dump($fileName);
 

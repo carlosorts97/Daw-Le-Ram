@@ -17,23 +17,48 @@
             <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                 <div class="row">
                     <div class="col-lg-6 text-left border-bottom pb-3">
-                        <div class="btn btn-light align-self-center">
+                        <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':0} )}}">
                             {{ category.name }}
-                        </div>
-                        {% if brand !=null %}
+                        </a>
+                        {% if brandN != null %}
+                            >
+                            <div class="btn btn-light align-self-center">
+                                {{ brandN.name }}
+                            </div>
+                        {% endif %}
+                        {% if title != null %}
+                            {% if category.Idcategory == 4 %}
+                                >
+                                <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':99} )}}">
+                                    {{ title }}
+                                </a>
+                            {% else %}
+                                >
+                                <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':66} )}}">
+                                    {{ title }}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        {% if filter!=null %}
                             >
                         <div class="btn btn-light align-self-center">
-                            {{ brand.name }}
+                            {{ filter }}
                         </div>
                         {% endif %}
+                        
                     </div>
                     <div class="col-lg-6 text-right border-bottom">
-                        <select class="selectpicker" data-live-search="true">
-                            <option data-tokens="caro">Más caro</option>
-                            <option data-tokens="barato">Más barato</option>
-                            <option data-tokens="fecha">Release date</option>
-                            <option data-tokens="popular">Popular</option>
-                        </select>
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filtros
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Más Caro</a>
+                                <a class="dropdown-item" href="#">Más barato</a>
+                                <a class="dropdown-item" href="#">Fecha lanzamiento</a>
+                                <a class="dropdown-item" href="#">Nombre</a>
+                            </div>
+                        </div>
                     </div>
                     {% for article in articles %}
                         <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">

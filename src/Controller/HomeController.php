@@ -24,13 +24,13 @@ class HomeController extends AbstractController
         /*-----------------------------------------CONSULTAS----------------------------------------------------*/
         /*STREETWEAR*/
         $sql = '
-        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
-        from articles
-        INNER JOIN sizes ON articles.id_article = sizes.article
-        WHERE category=1 OR category=2 OR category=3 OR category=5  
-        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
-        ORDER BY articles.retail_date DESC
-        LIMIT 3
+         SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
+            ORDER BY retail_date ASC
+            LIMIT 3;
         ';
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -38,13 +38,13 @@ class HomeController extends AbstractController
         $stHype= $stmt->fetchAll();
 
         $sql = '
-        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
-        from articles
-        INNER JOIN sizes ON articles.id_article = sizes.article
-        WHERE category=1 OR category=2 OR category=3 OR category=5 
-        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
-        ORDER BY articles.retail_date DESC
-        LIMIT 3
+        SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
+            ORDER BY retail_date DESC
+            LIMIT 3;
         ';
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -55,10 +55,10 @@ class HomeController extends AbstractController
         $sql = '
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles
-        INNER JOIN sizes ON articles.id_article = sizes.article
+        LEFT JOIN sizes ON articles.id_article = sizes.article
         WHERE category=4  
         GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
-        ORDER BY articles.retail_date DESC
+        ORDER BY retail_date DESC
         LIMIT 3
         ';
         $stmt = $conn->prepare($sql);
@@ -69,7 +69,7 @@ class HomeController extends AbstractController
         $sql = '
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles
-        INNER JOIN sizes ON articles.id_article = sizes.article
+        LEFT JOIN sizes ON articles.id_article = sizes.article
         WHERE category=4
         GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
         ORDER BY articles.retail_date DESC
