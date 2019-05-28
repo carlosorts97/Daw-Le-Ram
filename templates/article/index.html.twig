@@ -8,16 +8,16 @@
     <div class="container-fluid">
         <div class="row mb-5">
             <div class="col-lg-2 col-md-2 col-sm-2 col-12 border-right pt-5 ">
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">fdsfdsd</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Pantalones</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Sudadera</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Accesorios</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Sneakers</div>
+                <a href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Camisetas</a>
+                <a href="{{ path('app_listArticles',{'category': 2, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Sudaderas</a>
+                <a href="{{ path('app_listArticles',{'category': 3, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Pantalones</a>
+                <a href="{{ path('app_listArticles',{'category': 4, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Sneakers</a>
+                <a href="{{ path('app_listArticles',{'category': 5, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Accesorios</a>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                 <div class="row">
                     <div class="col-lg-6 text-left border-bottom pb-3">
-                        <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':0} )}}">
+                        <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':0} )}}">
                             {{ category.name }}
                         </a>
                         {% if brandN != null %}
@@ -29,12 +29,12 @@
                         {% if title != null %}
                             {% if category.Idcategory == 4 %}
                                 >
-                                <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':99} )}}">
+                                <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':99} )}}">
                                     {{ title }}
                                 </a>
                             {% else %}
                                 >
-                                <a class="btn btn-light align-self-center" href="{{ path('prueba',{'category': category.idCategory, 'brand':66} )}}">
+                                <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':66} )}}">
                                     {{ title }}
                                 </a>
                             {% endif %}
@@ -45,7 +45,7 @@
                             {{ filter }}
                         </div>
                         {% endif %}
-                        
+
                     </div>
                     <div class="col-lg-6 text-right border-bottom">
                         <div class="dropdown">
@@ -53,10 +53,10 @@
                                 Filtros
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Más Caro</a>
-                                <a class="dropdown-item" href="#">Más barato</a>
-                                <a class="dropdown-item" href="#">Fecha lanzamiento</a>
-                                <a class="dropdown-item" href="#">Nombre</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_expensive',{'category': category.idCategory, 'brand':brand} )}}">Más Caro</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_cheap',{'category': category.idCategory, 'brand':brand} )}}">Más barato</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_date',{'category': category.idCategory, 'brand':brand} )}}">Fecha lanzamiento</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_name',{'category': category.idCategory, 'brand':brand} )}}">Nombre</a>
                             </div>
                         </div>
                     </div>
