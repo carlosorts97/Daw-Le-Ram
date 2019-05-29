@@ -205,6 +205,14 @@ form{
     border-right: 3px solid #7A306C;
 }
 
+.cont_S{display: none;}
+.cont_M{display: none;}
+.cont_XL{display: none;}
+
+.size_select{
+    background-color: #AAAAAA;
+}
+
 @media only screen and (max-width: 600px) {
     .dropdown-item {
         font-size:12px;
