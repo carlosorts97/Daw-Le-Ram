@@ -8,34 +8,62 @@
     <div class="container-fluid">
         <div class="row mb-5">
             <div class="col-lg-2 col-md-2 col-sm-2 col-12 border-right pt-5 ">
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">fdsfdsd</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Pantalones</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Sudadera</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Accesorios</div>
-                <div class="col-lg-12 col-4 btn btn-light mb-3 border-bottom">Sneakers</div>
+                <a href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Camisetas</a>
+                <a href="{{ path('app_listArticles',{'category': 2, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Sudaderas</a>
+                <a href="{{ path('app_listArticles',{'category': 3, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Pantalones</a>
+                <a href="{{ path('app_listArticles',{'category': 4, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Sneakers</a>
+                <a href="{{ path('app_listArticles',{'category': 5, 'brand':0} )}}" class="col-lg-12 col-4 btn btn-light mb-3 border-bottom"> Accesorios</a>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-10">
                 <div class="row">
                     <div class="col-lg-6 text-left border-bottom pb-3">
-                        <div class="btn btn-light align-self-center">
+                        <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':0} )}}">
                             {{ category.name }}
-                        </div>
-                        >
+                        </a>
+                        {% if brandN != null %}
+                            >
+                            <div class="btn btn-light align-self-center">
+                                {{ brandN.name }}
+                            </div>
+                        {% endif %}
+                        {% if title != null %}
+                            {% if category.Idcategory == 4 %}
+                                >
+                                <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':99} )}}">
+                                    {{ title }}
+                                </a>
+                            {% else %}
+                                >
+                                <a class="btn btn-light align-self-center" href="{{ path('app_listArticles',{'category': category.idCategory, 'brand':66} )}}">
+                                    {{ title }}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                        {% if filter!=null %}
+                            >
                         <div class="btn btn-light align-self-center">
-                                {{ brand.name }}
+                            {{ filter }}
                         </div>
+                        {% endif %}
+
                     </div>
                     <div class="col-lg-6 text-right border-bottom">
-                        <select class="selectpicker" data-live-search="true">
-                            <option data-tokens="caro">Más caro</option>
-                            <option data-tokens="barato">Más barato</option>
-                            <option data-tokens="fecha">Release date</option>
-                            <option data-tokens="popular">Popular</option>
-                        </select>
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filtros
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ path('app_articleslist_expensive',{'category': category.idCategory, 'brand':brand} )}}">Más Caro</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_cheap',{'category': category.idCategory, 'brand':brand} )}}">Más barato</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_date',{'category': category.idCategory, 'brand':brand} )}}">Fecha lanzamiento</a>
+                                <a class="dropdown-item" href="{{ path('app_articleslist_name',{'category': category.idCategory, 'brand':brand} )}}">Nombre</a>
+                            </div>
+                        </div>
                     </div>
                     {% for article in articles %}
                         <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
                             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+                            <p class="text-center">{{ article.image}}</p>
                             <p class="text-center">{{ article.name}}</p>
                             <p class="text-center">{{ article.price | number_format}}€</p>
                         </div>

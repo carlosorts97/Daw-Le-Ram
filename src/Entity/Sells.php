@@ -29,6 +29,20 @@ class Sells
      * @ORM\Column(name="sell_date", type="date", nullable=false)
      */
     private $sellDate;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="totalPaid", type="float", precision=10, scale=2, nullable=false)
+     */
+    private $totalPaid;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="size", type="string", length=10, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $size;
 
     /**
      * @var \Users
@@ -51,17 +65,13 @@ class Sells
     private $seller;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Articles
      *
-     * @ORM\ManyToMany(targetEntity="Articles", inversedBy="sell")
-     * @ORM\JoinTable(name="details_sell",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="sell", referencedColumnName="id_sell")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="article", referencedColumnName="id_article")
-     *   }
-     * )
+
+     * @ORM\OneToOne(targetEntity="Articles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="article", referencedColumnName="id_article")
+     * })
      */
     private $article;
 
@@ -114,10 +124,8 @@ class Sells
         return $this;
     }
 
-    /**
-     * @return Collection|Articles[]
-     */
-    public function getArticle(): Collection
+
+    public function getArticle()
     {
         return $this->article;
     }
@@ -138,6 +146,37 @@ class Sells
         }
 
         return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalPaid(): float
+    {
+        return $this->totalPaid;
+    }
+
+    /**
+     * @param float $totalPaid
+     */
+    public function setTotalPaid(float $totalPaid): void
+    {
+        $this->totalPaid = $totalPaid;
+    }
+    /**
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * @param string $size
+     */
+    public function setSize(string $size)
+    {
+        $this->size = $size;
     }
 
 }

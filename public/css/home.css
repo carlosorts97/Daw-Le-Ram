@@ -19,6 +19,15 @@ body {
     min-height: 100%;
 }
 
+.link{
+    color: black;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: black;
+}
+
 .divisor{
     border-bottom: 1px solid darkgray;
 }

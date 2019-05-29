@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,6 +88,16 @@
 {% block javascripts %}{% endblock %}
 <script type="text/javascript" src="/public/js/jquery.min.js"></script>
 <script type="text/javascript" src="/public/js/bloodhound.jquery.min.js"></script>
+=======
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+<input type="submit" class="btn btn-success" value="Register">
+{{ form_errors(form) }}
+        {{ form_end(form) }}
+
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/js/bloodhound.min.js"></script>
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
 <script type="text/javascript" src="/public/js/typeahead.jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function ()
@@ -98,14 +109,22 @@
                 remote: {
                     url: "{{ path('handle_search') }}/%QUERY%",
                     wildcard: '%QUERY%',
+<<<<<<< HEAD
                     filter: function (articles)
+=======
+                    filter: function (stdokeates)
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
                     {
                         return $.map(articles, function (articles)
                         {
                             return {
                                 articles_id: articles.id,
+<<<<<<< HEAD
                                 articles_name: articles.name,
                                 articles_image: articles.image
+=======
+                                articles_name: articles.name
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
                             }
                         })
                     }
@@ -118,15 +137,26 @@
             },
             {
                 name: 'articles',
+<<<<<<< HEAD
                 source: articles.ttAdapter(),
                 display: 'articles_name',
+=======
+                source: states.ttAdapter(),
+                display: 'articles_id',
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
                 templates: {
                     suggestion: function (data)
                     {
                         return `
+<<<<<<< HEAD
                                 <a href='{{ path('article_page') }}/`+data.articles_id+`'>
 
 
+=======
+                                <a href='{{ path('city_page') }}/`+data.articles_id+`'>
+
+                                    <strong>`+data.articles_id+`</strong>
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
                                     <span>`+data.articles_name+`</span>
                                 </div>
                             `
@@ -138,5 +168,9 @@
                 }
             })
     })
+<<<<<<< HEAD
 </script>
 </html>
+=======
+</script>
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645

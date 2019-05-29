@@ -19,6 +19,74 @@ class HomeController extends AbstractController
      */
     public function homepage(){
 
-        return $this->render("home/home.html.twig");
+        $em = $this->getDoctrine()->getEntityManager();
+        $conn = $em->getConnection();
+        /*-----------------------------------------CONSULTAS----------------------------------------------------*/
+        /*STREETWEAR*/
+        $sql = '
+         SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
+            ORDER BY retail_date ASC
+            LIMIT 3;
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $stHype= $stmt->fetchAll();
+        $sql = '
+        SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
+            ORDER BY retail_date DESC
+            LIMIT 3;
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $stLast= $stmt->fetchAll();
+
+        /*SNEAKERS*/
+        $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        LEFT JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=4  
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY retail_date DESC
+        LIMIT 3
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $snkHype= $stmt->fetchAll();
+
+        $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        LEFT JOIN sizes ON articles.id_article = sizes.article
+        WHERE category=4
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY articles.retail_date DESC
+        LIMIT 3
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $snkLast= $stmt->fetchAll();
+        /*-----------------------------------------CONSULTAS----------------------------------------------------*/
+
+
+        return $this->render('home/home.html.twig', [
+            'stHype' => $stHype,
+            'stLast' => $stLast,
+            'snkHype' => $snkHype,
+            'snkLast' => $snkLast
+        ]);
     }
 }

@@ -148,11 +148,15 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
-            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left"> </p>
-            <p class="text-left">Precio</p>
-        </div>
+        {% for stH in stHype %}
+            <a href="google.com" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
+                    <p class="text-left">{{ stH.image }}</p>
+                    <p class="text-left">{{ stH.name }}</p>
+                    <p class="text-left">{{ stH.price | number_format}}€</p>
+            </a>
+
+        {% endfor %}
     </div>
 
     <div class="row divisor">
@@ -164,23 +168,14 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
+        {% for stL in stLast %}
+        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
-            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-4 col-lg-4 text-center">
-            <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
+            <p class="text-left">{{ stL.image }}</p>
+            <p class="text-left">{{ stL.name }}</p>
+            <p class="text-left">{{ stL.price | number_format}}€</p>
+        </a>
+        {% endfor %}
     </div>
 </div>
 
@@ -193,61 +188,50 @@
     </div>
 
     <div class="row divisor">
-        <div class="col-lg-6 text-left signika">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-left signika">
             <h5>Articulos</h5>
         </div>
-        <div class="col-lg-6 text-right signika">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
             <h5>Ver más</h5>
         </div>
     </div>
 
     <div class="row mb-5">
-        <div class="col-lg-4 text-center">
-            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-lg-4 text-center">
-            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-lg-4 text-center">
-            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
+        {% for snkH in snkHype %}
+            <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+                <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
+                <p class="text-left">{{ snkH.image }}</p>
+                <p class="text-left">{{ snkH.name }}</p>
+                <p class="text-left">{{ snkH.price | number_format}}€</p>
+            </a>
+        {% endfor %}
     </div>
 
     <div class="row divisor">
-        <div class="col-lg-6 text-left signika">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-left signika">
             <h5>Last arrivals</h5>
         </div>
-        <div class="col-lg-6 text-right signika">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
             <h5>Ver más</h5>
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+        {% for snkL in snkLast %}
+        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-            <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-            <img src="{{ asset('img/sneaker.jpg') }}" width="170px" >
-            <p class="text-left">Nombre</p>
-            <p class="text-left">Precio</p>
-        </div>
+            <p class="text-left">{{ snkL.image }}</p>
+            <p class="text-left">{{ snkL.name }}</p>
+            <p class="text-left">{{ snkL.price | number_format}}€</p>
+        </a>
+        {% endfor %}
     </div>
+</div>
+
+<div class="container text-center">
+    <div class="row text-center justify-content-center">
+        <h3 class="col-6 btn btn-navegar text-center p-3 mb-5 signika">Explorar todos los articulos disponibles</h3>
+    </div>
+
 </div>
 
 <footer>
@@ -276,6 +260,7 @@
         </div>
     </div>
 </footer>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

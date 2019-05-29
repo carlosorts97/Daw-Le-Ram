@@ -141,33 +141,6 @@ class Articles
         return $this;
     }
 
-    /**
-     * @return Collection|Sells[]
-     */
-    public function getSell(): Collection
-    {
-        return $this->sell;
-    }
-
-    public function addSell(Sells $sell): self
-    {
-        if (!$this->sell->contains($sell)) {
-            $this->sell[] = $sell;
-            $sell->addArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSell(Sells $sell): self
-    {
-        if ($this->sell->contains($sell)) {
-            $this->sell->removeElement($sell);
-            $sell->removeArticle($this);
-        }
-
-        return $this;
-    }
 
     public function getBrand(): ?Brands
     {

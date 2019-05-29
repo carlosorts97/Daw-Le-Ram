@@ -1,1 +1,18 @@
+<<<<<<< HEAD
 {{ form(form) }}
+=======
+{% extends 'base.html.twig' %}
+
+
+
+
+    {% block body %}<div class="container">{{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-success" value="Register">
+        {{ form_errors(form) }}
+        {{ form_end(form) }}</div>{% endblock %}
+
+
+
+
+>>>>>>> 2475fdaea1025c7d7f11492bb74cc3e9831e2645
