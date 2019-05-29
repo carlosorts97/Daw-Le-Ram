@@ -149,7 +149,7 @@
     </div>
     <div class="row mb-5">
         {% for stH in stHype %}
-            <a href="google.com" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+            <a href="{{ path('app_showArticle',{'id': stH.id_article, 'category':stH.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
                     <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
                     <p class="text-left">{{ stH.image }}</p>
                     <p class="text-left">{{ stH.name }}</p>
@@ -169,7 +169,7 @@
     </div>
     <div class="row mb-5">
         {% for stL in stLast %}
-        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+        <a href="{{ path('app_showArticle',{'id': stL.id_article, 'category':stL.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
             <p class="text-left">{{ stL.image }}</p>
             <p class="text-left">{{ stL.name }}</p>
@@ -198,7 +198,7 @@
 
     <div class="row mb-5">
         {% for snkH in snkHype %}
-            <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+            <a href="{{ path('app_showArticle',{'id': snkH.id_article, 'category':snkH.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
                 <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
                 <p class="text-left">{{ snkH.image }}</p>
                 <p class="text-left">{{ snkH.name }}</p>
@@ -217,7 +217,7 @@
     </div>
     <div class="row mb-5">
         {% for snkL in snkLast %}
-        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+        <a href="{{ path('app_showArticle',{'id': snkL.id_article, 'category':snkL.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
             <p class="text-left">{{ snkL.image }}</p>
             <p class="text-left">{{ snkL.name }}</p>

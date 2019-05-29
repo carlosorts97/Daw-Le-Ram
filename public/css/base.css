@@ -205,10 +205,30 @@ form{
     border-right: 3px solid #7A306C;
 }
 
+/*Contenedores de la pagina que muestra la ropa*/
 .cont_S{display: none;}
 .cont_M{display: none;}
 .cont_XL{display: none;}
 
+/*Contenedores de la pagina que muestra las zapatillas*/
+.cont_36{display: none;}
+.cont_37{display: none;}
+.cont_38{display: none;}
+.cont_38{display: none;}
+.cont_39{display: none;}
+.cont_40{display: none;}
+.cont_41{display: none;}
+.cont_42{display: none;}
+.cont_44{display: none;}
+.cont_45{display: none;}
+.cont_46{display: none;}
+
+.size_out{
+    color: #C9C9C9;
+}
+.size_out:hover{
+    color: #C9C9C9;
+}
 .size_select{
     background-color: #AAAAAA;
 }

@@ -27,7 +27,7 @@ class HomeController extends AbstractController
          SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            WHERE (category=1 OR category=2 OR category=3 OR category=5) AND price > 0
             GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
             ORDER BY retail_date ASC
             LIMIT 3;
@@ -41,7 +41,7 @@ class HomeController extends AbstractController
         SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE category=1 OR category=2 OR category=3 OR category=5 
+            WHERE (category=1 OR category=2 OR category=3 OR category=5) AND price > 0
             GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
             ORDER BY retail_date DESC
             LIMIT 3;
@@ -56,7 +56,7 @@ class HomeController extends AbstractController
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles
         LEFT JOIN sizes ON articles.id_article = sizes.article
-        WHERE category=4  
+        WHERE category=4 AND price > 0
         GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
         ORDER BY retail_date DESC
         LIMIT 3
@@ -70,7 +70,7 @@ class HomeController extends AbstractController
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles
         LEFT JOIN sizes ON articles.id_article = sizes.article
-        WHERE category=4
+        WHERE category=4 AND price > 0
         GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
         ORDER BY articles.retail_date DESC
         LIMIT 3

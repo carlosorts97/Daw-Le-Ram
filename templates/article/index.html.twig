@@ -61,12 +61,12 @@
                         </div>
                     </div>
                     {% for article in articles %}
-                        <div class="col-lg-3 col-md-6 col-sm-12 text-center mt-5">
+                        <a href="{{ path('app_showArticle',{'id': article.id_article, 'category':article.category} )}}" class="btn col-lg-3 col-md-6 col-sm-12 text-center mt-5">
                             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
                             <p class="text-center">{{ article.image}}</p>
                             <p class="text-center">{{ article.name}}</p>
                             <p class="text-center">{{ article.price | number_format}}€</p>
-                        </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
