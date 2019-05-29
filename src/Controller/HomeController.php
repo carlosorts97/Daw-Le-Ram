@@ -32,11 +32,11 @@ class HomeController extends AbstractController
         ORDER BY articles.retail_date DESC
         LIMIT 3
         ';
+
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         $stHype= $stmt->fetchAll();
-
         $sql = '
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles

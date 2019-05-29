@@ -924,63 +924,65 @@
     <table id="234" parent="2" name="cities"/>
     <table id="235" parent="2" name="countries"/>
     <table id="236" parent="2" name="credit_card"/>
-    <table id="237" parent="2" name="details_sell"/>
-    <table id="238" parent="2" name="images"/>
-    <table id="239" parent="2" name="reports"/>
-    <table id="240" parent="2" name="sells"/>
-    <table id="241" parent="2" name="sizes"/>
-    <table id="242" parent="2" name="stock"/>
-    <table id="243" parent="2" name="tracking"/>
-    <table id="244" parent="2" name="users"/>
-    <column id="245" parent="231" name="id_article">
+    <table id="237" parent="2" name="sells"/>
+    <table id="238" parent="2" name="sizes"/>
+    <table id="239" parent="2" name="stock"/>
+    <table id="240" parent="2" name="tracking"/>
+    <table id="241" parent="2" name="users"/>
+    <column id="242" parent="231" name="id_article">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="231" name="name">
+    <column id="243" parent="231" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="231" name="description">
+    <column id="244" parent="231" name="description">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="231" name="category">
+    <column id="245" parent="231" name="category">
       <Position>4</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="231" name="retail_date">
+    <column id="246" parent="231" name="retail_date">
       <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="231" name="brand">
+    <column id="247" parent="231" name="brand">
       <Position>6</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="251" parent="231" name="fk_category_article">
+    <column id="248" parent="231" name="image">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="249" parent="231" name="fk_category_article">
       <ColNames>category</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="252" parent="231" name="fk_brand_article">
+    <index id="250" parent="231" name="fk_brand_article">
       <ColNames>brand</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="253" parent="231" name="PRIMARY">
+    <key id="251" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_article</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="254" parent="231" name="fk_category_article">
+    <foreign-key id="252" parent="231" name="fk_category_article">
       <ColNames>category</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>category</RefTableName>
@@ -988,7 +990,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="255" parent="231" name="fk_brand_article">
+    <foreign-key id="253" parent="231" name="fk_brand_article">
       <ColNames>brand</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>brands</RefTableName>
@@ -996,71 +998,71 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="256" parent="232" name="id_brand">
+    <column id="254" parent="232" name="id_brand">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="232" name="name">
+    <column id="255" parent="232" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="258" parent="232" name="PRIMARY">
+    <key id="256" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_brand</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="259" parent="233" name="id_category">
+    <column id="257" parent="233" name="id_category">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="233" name="name">
+    <column id="258" parent="233" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="261" parent="233" name="PRIMARY">
+    <key id="259" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_category</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="262" parent="234" name="id_city">
+    <column id="260" parent="234" name="id_city">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="234" name="name">
+    <column id="261" parent="234" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="234" name="country">
+    <column id="262" parent="234" name="country">
       <Position>3</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="265" parent="234" name="fk_city_country">
+    <index id="263" parent="234" name="fk_city_country">
       <ColNames>country</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="266" parent="234" name="PRIMARY">
+    <key id="264" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_city</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="267" parent="234" name="fk_city_country">
+    <foreign-key id="265" parent="234" name="fk_city_country">
       <ColNames>country</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>countries</RefTableName>
@@ -1068,64 +1070,64 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="268" parent="235" name="id_country">
+    <column id="266" parent="235" name="id_country">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="235" name="name">
+    <column id="267" parent="235" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="270" parent="235" name="PRIMARY">
+    <key id="268" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_country</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="271" parent="236" name="number">
+    <column id="269" parent="236" name="number">
       <Position>1</Position>
       <DataType>char(12)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="236" name="cvv">
+    <column id="270" parent="236" name="cvv">
       <Position>2</Position>
       <DataType>char(3)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="236" name="end_date">
+    <column id="271" parent="236" name="end_date">
       <Position>3</Position>
       <DataType>char(5)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="236" name="owner">
+    <column id="272" parent="236" name="owner">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="236" name="user">
+    <column id="273" parent="236" name="user">
       <Position>5</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="276" parent="236" name="fk_user_card">
+    <index id="274" parent="236" name="fk_user_card">
       <ColNames>user</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="277" parent="236" name="PRIMARY">
+    <key id="275" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>number</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="278" parent="236" name="fk_user_card">
+    <foreign-key id="276" parent="236" name="fk_user_card">
       <ColNames>user</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1133,183 +1135,45 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="279" parent="237" name="sell">
+    <column id="277" parent="237" name="id_sell">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="237" name="article">
+    <column id="278" parent="237" name="sell_date">
       <Position>2</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="237" name="seller">
+      <Position>3</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="237" name="quantity">
-      <Position>3</Position>
-      <DataType>int(2)|0s</DataType>
+    <column id="280" parent="237" name="buyer">
+      <Position>4</Position>
+      <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="282" parent="237" name="fk_details_article">
-      <ColNames>article</ColNames>
+    <index id="281" parent="237" name="fk_seller_sells">
+      <ColNames>seller</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="282" parent="237" name="fk_buyer_sells">
+      <ColNames>buyer</ColNames>
       <Type>btree</Type>
     </index>
     <key id="283" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>sell
-article</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="284" parent="237" name="fk_detail_sell">
-      <ColNames>sell</ColNames>
-      <RefSchemaName>LeRamDB</RefSchemaName>
-      <RefTableName>sells</RefTableName>
-      <RefColNames>id_sell</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="285" parent="237" name="fk_details_article">
-      <ColNames>article</ColNames>
-      <RefSchemaName>LeRamDB</RefSchemaName>
-      <RefTableName>articles</RefTableName>
-      <RefColNames>id_article</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <column id="286" parent="238" name="id_image">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="287" parent="238" name="url">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="288" parent="238" name="article">
-      <Position>3</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="289" parent="238" name="fk_article_image">
-      <ColNames>article</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="290" parent="238" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_image</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="291" parent="238" name="fk_article_image">
-      <ColNames>article</ColNames>
-      <RefSchemaName>LeRamDB</RefSchemaName>
-      <RefTableName>articles</RefTableName>
-      <RefColNames>id_article</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <column id="292" parent="239" name="id_report">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="293" parent="239" name="comment">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="294" parent="239" name="article">
-      <Position>3</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="295" parent="239" name="user">
-      <Position>4</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="296" parent="239" name="date">
-      <Position>5</Position>
-      <DataType>date|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="297" parent="239" name="fk_article_reports">
-      <ColNames>article</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="298" parent="239" name="fk_users_reports">
-      <ColNames>user</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="299" parent="239" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_report</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="300" parent="239" name="fk_article_reports">
-      <ColNames>article</ColNames>
-      <RefSchemaName>LeRamDB</RefSchemaName>
-      <RefTableName>articles</RefTableName>
-      <RefColNames>id_article</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="301" parent="239" name="fk_users_reports">
-      <ColNames>user</ColNames>
-      <RefSchemaName>LeRamDB</RefSchemaName>
-      <RefTableName>users</RefTableName>
-      <RefColNames>id_user</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <column id="302" parent="240" name="id_sell">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="303" parent="240" name="sell_date">
-      <Position>2</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="304" parent="240" name="seller">
-      <Position>3</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="305" parent="240" name="buyer">
-      <Position>4</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="306" parent="240" name="fk_seller_sells">
-      <ColNames>seller</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="307" parent="240" name="fk_buyer_sells">
-      <ColNames>buyer</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="308" parent="240" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
       <ColNames>id_sell</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="309" parent="240" name="fk_seller_sells">
+    <foreign-key id="284" parent="237" name="fk_seller_sells">
       <ColNames>seller</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1317,7 +1181,7 @@ article</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="310" parent="240" name="fk_buyer_sells">
+    <foreign-key id="285" parent="237" name="fk_buyer_sells">
       <ColNames>buyer</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1325,58 +1189,68 @@ article</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="311" parent="241" name="article">
+    <column id="286" parent="238" name="article">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="241" name="size">
+    <column id="287" parent="238" name="size">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="241" name="price">
+    <column id="288" parent="238" name="price">
       <Position>3</Position>
       <DataType>float(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="241" name="come_up">
+    <column id="289" parent="238" name="come_up">
       <Position>4</Position>
       <DataType>float(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="241" name="stock">
+    <column id="290" parent="238" name="stock">
       <Position>5</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="316" parent="241" name="user">
+    <column id="291" parent="238" name="user">
       <Position>6</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="317" parent="241" name="fk_stock_size">
+    <column id="292" parent="238" name="sell">
+      <Position>7</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="293" parent="238" name="fk_stock_size">
       <ColNames>stock</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="318" parent="241" name="fk_user_size">
+    <index id="294" parent="238" name="fk_user_size">
       <ColNames>user</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="319" parent="241" name="PRIMARY">
+    <index id="295" parent="238" name="fk_sizes_sells">
+      <ColNames>sell</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="296" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>article
 size
 user</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="320" parent="241" name="fk_size_article">
+    <foreign-key id="297" parent="238" name="fk_size_article">
       <ColNames>article</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>articles</RefTableName>
@@ -1384,7 +1258,7 @@ user</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="321" parent="241" name="fk_stock_size">
+    <foreign-key id="298" parent="238" name="fk_stock_size">
       <ColNames>stock</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>stock</RefTableName>
@@ -1392,7 +1266,7 @@ user</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="322" parent="241" name="fk_user_size">
+    <foreign-key id="299" parent="238" name="fk_user_size">
       <ColNames>user</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1400,72 +1274,7 @@ user</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="323" parent="242" name="id_stock">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="324" parent="242" name="stock">
-      <Position>2</Position>
-      <DataType>int(2)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="325" parent="242" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_stock</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="326" parent="243" name="id_tracking">
-      <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="327" parent="243" name="sell">
-      <Position>2</Position>
-      <DataType>int(10) unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="328" parent="243" name="state">
-      <Position>3</Position>
-      <DataType>varchar(100)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="329" parent="243" name="ttracking_company">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="330" parent="243" name="departure_date">
-      <Position>5</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="331" parent="243" name="fecha_llegada">
-      <Position>6</Position>
-      <DataType>date|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="332" parent="243" name="devolution_date">
-      <Position>7</Position>
-      <DataType>date|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="333" parent="243" name="fk_sell_tracking">
-      <ColNames>sell</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="334" parent="243" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_tracking</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="335" parent="243" name="fk_sell_tracking">
+    <foreign-key id="300" parent="238" name="fk_sizes_sells">
       <ColNames>sell</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>sells</RefTableName>
@@ -1473,81 +1282,154 @@ user</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="336" parent="244" name="id_user">
+    <column id="301" parent="239" name="id_stock">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="244" name="username">
+    <column id="302" parent="239" name="stock">
+      <Position>2</Position>
+      <DataType>int(2)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="303" parent="239" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_stock</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="304" parent="240" name="id_tracking">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="305" parent="240" name="sell">
+      <Position>2</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="306" parent="240" name="state">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="240" name="ttracking_company">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="240" name="departure_date">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="240" name="fecha_llegada">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="310" parent="240" name="devolution_date">
+      <Position>7</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="311" parent="240" name="fk_sell_tracking">
+      <ColNames>sell</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="312" parent="240" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_tracking</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="313" parent="240" name="fk_sell_tracking">
+      <ColNames>sell</ColNames>
+      <RefSchemaName>LeRamDB</RefSchemaName>
+      <RefTableName>sells</RefTableName>
+      <RefColNames>id_sell</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="314" parent="241" name="id_user">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="241" name="username">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="244" name="password">
+    <column id="316" parent="241" name="password">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="244" name="email">
+    <column id="317" parent="241" name="email">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="244" name="name">
+    <column id="318" parent="241" name="name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="244" name="surname">
+    <column id="319" parent="241" name="surname">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="244" name="telephone">
+    <column id="320" parent="241" name="telephone">
       <Position>7</Position>
       <DataType>char(9)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="244" name="birthday">
+    <column id="321" parent="241" name="birthday">
       <Position>8</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="244" name="address">
+    <column id="322" parent="241" name="address">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="244" name="city">
+    <column id="323" parent="241" name="city">
       <Position>10</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="244" name="roles">
+    <column id="324" parent="241" name="roles">
       <Position>11</Position>
       <DataType>json|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="347" parent="244" name="fk_city_users">
+    <index id="325" parent="241" name="fk_city_user">
       <ColNames>city</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="348" parent="244" name="PRIMARY">
+    <key id="326" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="349" parent="244" name="fk_city_users">
+    <foreign-key id="327" parent="241" name="fk_city_user">
       <ColNames>city</ColNames>
       <RefSchemaName>LeRamDB</RefSchemaName>
       <RefTableName>cities</RefTableName>
