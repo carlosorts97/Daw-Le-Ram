@@ -46,12 +46,17 @@ class SearcherController extends Controller
     public function searchAsssssssction(Request $request)
     {
 
-        $username=$request->query->get('myCountry');
+        $username=$request->query->get('buscador');
         $articles=$this->getDoctrine()->getRepository(Articles::class)->findOneBy(array('name'=>$username));
-        $id=$articles->getIdArticle();
-        $category=$articles->getCategory()->getIdCategory();
+        if($articles != null){
+            $id=$articles->getIdArticle();
+            $category=$articles->getCategory()->getIdCategory();
 
-        return $this->redirect($this->generateUrl('app_showArticle', array('id' => $id,'category'=>$category)));
+            return $this->redirect($this->generateUrl('app_showArticle', array('id' => $id,'category'=>$category)));
+        }
+
+        return $this->redirect($this->generateUrl('app_listArticles', array('category'=>1,'brand'=>0)));
+
     }
 
     public function searchBar(Request $request)

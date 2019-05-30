@@ -711,7 +711,7 @@ class PruebaController extends AbstractController
             $article_L= $stmt->fetchAll();
 
             $sql = '
-            SELECT articles.id_article, articles.name, articles.retail_date, articles.name, 
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article

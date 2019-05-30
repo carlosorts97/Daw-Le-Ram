@@ -56,51 +56,54 @@
 
         <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
             <div id="categorias" class="col-12 col-md-3 col-lg-3 signika text-left">
+
                 <div class="dropdown show">
                     <a class="btn btn-lg btn-navegar signika dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu dropright border-right" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-submenu dropleft "><a class="dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
-                            <div class="dropdown-menu dropleft border-right">
-                                <a class="dropdown-item btn btn-lg" href="#">Todas</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Supreme</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Off-white</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Vape</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
+                        <div class="dropdown-menu dropleft border-right">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':3} )}}">Nike</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':10} )}}">Air Jordan</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':4} )}}">Adidas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':9} )}}">Yeezy</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':99} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,7 +146,6 @@
             <h5>Articulos</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
     <div class="row mb-5">
@@ -163,7 +165,6 @@
             <h5>Last arrivals</h5>
         </div>
         <div class="col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
     <div class="row mb-5">
@@ -191,7 +192,6 @@
             <h5>Articulos</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
 
@@ -228,7 +228,7 @@
 
 <div class="container text-center">
     <div class="row text-center justify-content-center">
-        <h3 class="col-6 btn btn-navegar text-center p-3 mb-5 signika">Explorar todos los articulos disponibles</h3>
+        <a class="col-6 btn btn-navegar text-center p-3 mb-5 signika" href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}">Explorar todos los articulos disponibles</a>
     </div>
 
 </div>
@@ -323,6 +323,7 @@
 
 </script>
 <script>
+    /*SLIDE DEL BOTON STREETWEAR Y SNEAKERS*/
     $( "#streetwear" ).click(function () {
         if ( $( ".streetwear" ).is( ":hidden" ) ) {
             $( ".streetwear" ).slideDown( "slow" );
@@ -339,6 +340,22 @@
             $("#sneakers").addClass("subline_select")
             $("#streetwear").removeClass("subline_select")
         }
+    });
+
+    /*SUB-MENU Categorias*/
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+
+
+        $(this).parents('dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass("show");
+        });
+
+        return false;
     });
 </script>
 </body>

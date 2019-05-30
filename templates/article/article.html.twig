@@ -19,38 +19,38 @@
             </div>
             {%  if article_S == null  %}
             <div>
-                <div class="btn btn-light signika subline mr-2 size_out" href="#" id="S">S</div>
+                <div class="btn btn-light signika subline mr-2 size_out" id="S">S</div>
             </div>
             {% else %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 " href="#" id="S">S</div>
+                    <div class="btn btn-light signika subline mr-2 " id="S">S</div>
                 </div>
             {% endif %}
             {%  if article_M == null  %}
                 <div>
-                    <div class="btn signika subline mr-2 size_out" href="#" id="M">M</div>
+                    <div class="btn signika subline mr-2 size_out" id="M">M</div>
                 </div>
             {% else %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 " href="#" id="M">M</div>
+                    <div class="btn btn-light signika subline mr-2" id="M">M</div>
                 </div>
             {% endif %}
             {%  if article_L == null  %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" href="#" id="L">L</div>
+                    <div class="btn btn-light signika subline mr-2 size_out"  id="L">L</div>
                 </div>
             {% else %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 size_select" href="#" id="L">L</div>
+                    <div class="btn btn-light signika subline mr-2 size_select" id="L">L</div>
                 </div>
             {% endif %}
             {%  if article_XL == null  %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" href="#" id="XL">XL</div>
+                    <div class="btn btn-light signika subline mr-2 size_out"  id="XL">XL</div>
                 </div>
             {% else %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 " href="#" id="XL">XL</div>
+                    <div class="btn btn-light signika subline mr-2"  id="XL">XL</div>
                 </div>
             {% endif %}
         </div>
@@ -133,11 +133,11 @@
                 <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
             </div>
             <div class="col-lg-4">
-                <h3 class="mb-3"><b>{{ article_L[0].name}}</b></h3>
-                <p>Descripción: {{ article_L[0].description }}</p>
-                <h3 >Talla: <span class="text-secondary">{{ article_L[0].size }}</span></h3>
+                <h3 class="mb-3"><b>{{ article_XL[0].name}}</b></h3>
+                <p>Descripción: {{ article_XL[0].description }}</p>
+                <h3 >Talla: <span class="text-secondary">{{ article_XL[0].size }}</span></h3>
                 <div class="row mt-3">
-                    <div class="col-lg-6"><h3>Precio:<span class="text-secondary">{{ article_L[0].price }}€</span></h3></div>
+                    <div class="col-lg-6"><h3>Precio:<span class="text-secondary">{{ article_XL[0].price }}€</span></h3></div>
                     <div class="col-lg-6"><h3>Envio:<span class="text-secondary">10€</span></h3></div>
                 </div>
                 <div class="col-lg-12 text-center mt-3">
