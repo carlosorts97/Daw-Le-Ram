@@ -20,6 +20,14 @@ body {
     min-height: 100%;
 }
 
+.article_image_sm{
+    width: 180px;
+}
+
+.article_image_lg{
+    width: 300px;
+}
+
 .cabecera{
     width: 100%;
     padding: 15px;
@@ -232,6 +240,19 @@ form{
 .size_select{
     background-color: #AAAAAA;
 }
+/*BUSCADOR-----------------------------------------------------------------------------------------------------*/
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
 
 @media only screen and (max-width: 600px) {
     .dropdown-item {

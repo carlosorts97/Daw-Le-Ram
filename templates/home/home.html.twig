@@ -55,7 +55,7 @@
 
 
         <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
-            <div id="categorias" class="col-12 col-sm-12 col-md-3 col-lg-3 signika text-left">
+            <div id="categorias" class="col-12 col-md-3 col-lg-3 signika text-left">
                 <div class="dropdown show">
                     <a class="btn btn-lg btn-navegar signika dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
@@ -105,16 +105,15 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-center justify-content-center">
-                <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
-                    <input class="form-control col-12 col-md-6" type="text" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-default btn-lg col-12 col-md-1 lupa">
-                        <img src="img/lupa.png" height="26px">
-                    </button>
-                </form>
+            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center">
+                {{
+                render(
+                    controller('App\\Controller\\SearcherController::searchAction')
+                )
+                }}
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-12 mt-2 text-right">
+            <div class="col-12 col-md-3 col-lg-3 mt-2 text-right">
                 <a class="btn btn-success btn-lg signika col12" href="{{ path('app_uploadArticle') }}">Venta</a>
             </div>
         </div>
