@@ -48,7 +48,7 @@
                                     <a class="dropdown-item" href="">Admin</a>
                                 {% endif %}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
                                     Cerrar Sesion <i class="fa fa-times" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -119,13 +119,12 @@
                 </div>
 
             </div>
-            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center" id="buscador">
-                <form class="buscador form-inline mt-md-0 justify-content-center">
-                    <input class="form-control col-12 col-md-6" type="text" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-default btn-lg col-12 col-md-1 lupa">
-                        <img src="/img/lupa.png" height="26px">
-                    </button>
-                </form>
+            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center border" id="buscador">
+                {{
+                render(
+                    controller('App\\Controller\\SearcherController::searchAction')
+                )
+                }}
             </div>
             <div id="vender" class="col-12 col-md-3 col-lg-3 text-center">
                 <a class="btn btn-lg btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a>

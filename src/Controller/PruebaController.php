@@ -653,6 +653,7 @@ class PruebaController extends AbstractController
                 'article_44' => $article_44,
                 'article_45' => $article_45,
                 'article_46' => $article_46,
+                'recommended'=> $recommended,
                 'article' => $article
             ]);
 
