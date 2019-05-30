@@ -3,18 +3,23 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
-use App\Entity\Cities;
-use App\Entity\Countries;
+use App\Entity\Sells;
 use App\Entity\Sizes;
 use App\Form\EditUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Tests\Extension\Core\Type\SubmitTypeTest;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class UserController extends AbstractController
 {
@@ -33,11 +38,22 @@ class UserController extends AbstractController
     public function showArticles()
     {
         $id = $this->getUser();
-        $sizes= new Sizes();
         $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
         $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
         return $this->render('admin/index.html.twig', [
             'articles' => $articles
+        ]);
+    }
+    /**
+     * @Route("/user/orders", name="app_showOrders")
+     */
+    public function showOrders()
+    {
+        $id = $this->getUser();
+
+        $order = $this->getDoctrine()->getRepository(Sells::class)->findBy(['buyer'=>$id]);
+        return $this->render('user/ShowOrders.html.twig', [
+            'orders' => $order
         ]);
     }
     /**
@@ -123,5 +139,60 @@ class UserController extends AbstractController
      */
     public function logout(){
         $this->redirectToRoute('app_homepage');
+    }
+
+    /**
+     * @Route("/search", name ="app_search")
+     */
+    public function search(){
+
+        $form = $this->createForm(SearchType::class);
+        return $this->render('search/searcher.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+    /**
+     * @Route("/handleSearch/{_query?}", name="handle_search", methods={"POST", "GET"})
+     */
+    public function handleSearchRequest(Request $request, $_query)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if ($_query)
+        {
+            $data = $em->getRepository(Articles::class)->findBy($_query);
+        } else {
+            $data = $em->getRepository(Articles::class)->findAll();
+        }
+        // iterate over all the resuls and 'inject' the image inside
+        for ($index = 0; $index < count($data); $index++)
+        {
+            $object = $data[$index];
+            // http://via.placeholder.com/35/0000FF/ffffff
+        }
+        // setting up the serializer
+        $normalizers = [
+            new ObjectNormalizer()
+        ];
+        $encoders =  [
+            new JsonEncoder()
+        ];
+        $serializer = new Serializer($normalizers, $encoders);
+        $data = $serializer->serialize($data, 'json');
+        return new JsonResponse($data, 200, [], true);
+    }
+    /**
+     * @Route("/city/{id?}", name="city_page", methods={"GET"})
+     */
+    public function citySingle(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $city = null;
+
+        if ($id) {
+            $city = $em->getRepository(Cities::class)->findOneBy(['id' => $id]);
+        }
+        return $this->render('home/city.html.twig', [
+            'city'  =>      $city
+        ]);
     }
 }

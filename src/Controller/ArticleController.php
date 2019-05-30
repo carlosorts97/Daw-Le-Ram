@@ -42,7 +42,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/up3Product/{id}", name="app_upload3Article")
+     * @Route("/upArticle/{id}", name="app_uploadSizes")
      */
     public function uploadA3rticle(Request $Request, $id)
     {

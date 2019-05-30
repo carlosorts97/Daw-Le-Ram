@@ -78,17 +78,23 @@ class Sizes
         $this->comeUp = 0;
     }
 
-    public function getSize(): ?string
+    /**
+     * @return string
+     */
+    public function getSize()
     {
         return $this->size;
     }
 
-    public function setSize(String $size): self
+    /**
+     * @param string $size
+     */
+    public function setSize(string $size)
     {
         $this->size = $size;
-
-        return $this;
     }
+
+
     public function getPrice(): ?float
     {
         return $this->price;

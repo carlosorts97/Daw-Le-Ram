@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+<input type="submit" class="btn btn-success" value="Register">
+{{ form_errors(form) }}
+        {{ form_end(form) }}
+
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/js/bloodhound.min.js"></script>
+<script type="text/javascript" src="/public/js/typeahead.jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        var articles = new Bloodhound(
+            {
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: "{{ path('handle_search') }}/%QUERY%",
+                    wildcard: '%QUERY%',
+                    filter: function (stdokeates)
+                    {
+                        return $.map(articles, function (articles)
+                        {
+                            return {
+                                articles_id: articles.id,
+                                articles_name: articles.name
+                            }
+                        })
+                    }
+                }
+            })
+        states.initialize();
+        $('#form_query').typeahead(
+            {
+                hint: true
+            },
+            {
+                name: 'articles',
+                source: states.ttAdapter(),
+                display: 'articles_id',
+                templates: {
+                    suggestion: function (data)
+                    {
+                        return `
+                                <a href='{{ path('city_page') }}/`+data.articles_id+`'>
+
+                                    <strong>`+data.articles_id+`</strong>
+                                    <span>`+data.articles_name+`</span>
+                                </div>
+                            `
+                    },
+                    footer: function (query)
+                    {
+                        return '<div class="text-center">More results about: '+ query.query +'</div>'
+                    }
+                }
+            })
+    })
+</script>
