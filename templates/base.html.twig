@@ -41,7 +41,8 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="login">
-                                <a class="dropdown-item" href="">Mis pedidos</a>
+                                <a class="dropdown-item" href="{{ path('app_showOrders') }}">Mis pedidos</a>
+                                <a class="dropdown-item" href="{{ path('app_showArticles') }}">Mis Articulos</a>
                                 <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <div class="dropdown-divider"></div>
@@ -120,8 +121,15 @@
                 )
                 }}
             </div>
-            <div id="vender" class="col-12 col-md-3 col-lg-3 text-center">
-                <a class="btn btn-lg btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a>
+            <div id="vender" class="col-12 col-sm-12 col-md-3 col-lg-3 text-center">
+                {% if app.user == null %}
+                <a class="btn btn-lg btn-success signika" href="{{ path('app_login') }}">Venta</a>
+                {% else %}
+                <a class="btn btn-sm btn-success signika" href="">Venta</a>
+                {% endif %}
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a class="btn btn-sm btn-success signika" href="{{ path('app_uploadArticle') }}">Subir articulo</a>
+                    {% endif %}
             </div>
         </div>
     </div>

@@ -401,6 +401,93 @@ class PruebaController extends AbstractController
     }
 
     /**
+     * @Route("/article/list/{category}/{brand}/hype", name="app_articleslist_hype")
+     */
+    public function listArticleFilterHyped($category, $brand)
+    {
+        $filter="Más comprados";
+        $title = null;
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $conn = $em->getConnection();
+        if ($brand == 0) {
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category='.$category.' AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+        }
+        /*Este elseif para cargar los articulos de categorias>resto de marcas*/
+        elseif ($brand==66){
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND (brand<>1 AND brand<>5 AND brand<>14) AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+            $title = "Resto de marcas";
+        }
+        /*Este elseif para cargar los articulos de categorias>resto de marcas*/
+        elseif ($brand==99){
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND (brand<>3 AND brand<>4 AND brand<>5 AND brand<>9 AND brand<>10)
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+            $title = "Resto de marcas";
+        }
+        else {
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND brand='.$brand.' AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN= $this->getDoctrine()->getRepository(Brands::class)->find($brand);
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $articles= $stmt->fetchAll();
+
+        return $this->render('article/index.html.twig', [
+            'articles' => $articles,
+            'category' => $category,
+            'brand' => $brand,
+            'brandN' => $brandN,
+            'filter' => $filter,
+            'title' => $title
+        ]);
+    }
+
+    /*------------------------------------------Filtros de busqueda-------------------------------------------------------------------------*/
+
+    /**
      * @Route("/article/show/{id}/{category}", name="app_showArticle")
      */
     public function show_article($id, $category)

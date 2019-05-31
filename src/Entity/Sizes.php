@@ -154,6 +154,4 @@ class Sizes
 
         return $this;
     }
-
-
 }

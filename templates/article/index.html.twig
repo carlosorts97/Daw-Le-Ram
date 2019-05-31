@@ -54,6 +54,7 @@
                                 Filtros
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ path('app_articleslist_hype',{'category': category.idCategory, 'brand':brand} )}}">Más Populares</a>
                                 <a class="dropdown-item" href="{{ path('app_articleslist_expensive',{'category': category.idCategory, 'brand':brand} )}}">Más Caro</a>
                                 <a class="dropdown-item" href="{{ path('app_articleslist_cheap',{'category': category.idCategory, 'brand':brand} )}}">Más barato</a>
                                 <a class="dropdown-item" href="{{ path('app_articleslist_date',{'category': category.idCategory, 'brand':brand} )}}">Fecha lanzamiento</a>

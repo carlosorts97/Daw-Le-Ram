@@ -24,19 +24,40 @@ class HomeController extends AbstractController
         /*-----------------------------------------CONSULTAS----------------------------------------------------*/
         /*STREETWEAR*/
         $sql = '
-         SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
-            from articles
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
             LEFT JOIN sizes ON articles.id_article = sizes.article
             WHERE (category=1 OR category=2 OR category=3 OR category=5) AND price > 0
-            GROUP BY id_article, articles.retail_date, articles.name,category,brand,image
-            ORDER BY retail_date ASC
-            LIMIT 3;
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
         ';
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         $stHype= $stmt->fetchAll();
+
+        if($stHype == null)
+        {
+            $sql = '
+        SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
+        from articles
+        LEFT JOIN sizes ON articles.id_article = sizes.article
+        WHERE (category=1 OR category=2 OR category=3 OR category=5) AND price > 0
+        GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
+        ORDER BY id_article DESC
+        LIMIT 3
+        ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $snkHype= $stmt->fetchAll();
+        }
+
+
         $sql = '
         SELECT id_article, name,articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
             from articles
@@ -53,18 +74,39 @@ class HomeController extends AbstractController
 
         /*SNEAKERS*/
         $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=4 AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $snkHype= $stmt->fetchAll();
+
+        if($snkHype == null)
+        {
+            $sql = '
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
         from articles
         LEFT JOIN sizes ON articles.id_article = sizes.article
         WHERE category=4 AND price > 0
         GROUP BY id_article,articles.retail_date, articles.name,category,brand,image
-        ORDER BY retail_date DESC
+        ORDER BY id_article DESC
         LIMIT 3
         ';
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
 
-        $snkHype= $stmt->fetchAll();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $snkHype= $stmt->fetchAll();
+        }
+
 
         $sql = '
         SELECT id_article, name, articles.retail_date, articles.name,category,brand, AVG(sizes.price) AS price, image
@@ -75,6 +117,7 @@ class HomeController extends AbstractController
         ORDER BY articles.retail_date DESC
         LIMIT 3
         ';
+
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 

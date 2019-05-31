@@ -161,10 +161,8 @@ class Articles
     public function setImage($image): self
     {
 
-            $this->image = $image;
+        $this->image = $image;
 
         return $this;
     }
-
-
 }
