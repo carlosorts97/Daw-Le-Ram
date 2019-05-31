@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\CreditCard;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * User
@@ -44,6 +46,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->card = new ArrayCollection();
     }
 
     /**
@@ -113,6 +116,15 @@ class User implements UserInterface
      * })
      */
     private $city;
+    /**
+     * @var \CreditCard
+     *
+     * @ORM\OneToMany(targetEntity="CreditCard", mappedBy="user", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="number", referencedColumnName="number")
+     * })
+     */
+    private $card;
 
     /**
      * @ORM\Column(type="json")
@@ -133,6 +145,37 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CreditCard[]
+     */
+    public function getCard()
+    {
+        return $this->card;
+    }
+
+    public function addComment(CreditCard $card): self
+    {
+        if (!$this->card->contains($card)) {
+            $this->card[] = $card;
+            $card->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(CreditCard $card): self
+    {
+        if ($this->card->contains($card)) {
+            $this->card->removeElement($card);
+            // set the owning side to null (unless already changed)
+            if ($card->getUser() === $this) {
+                $card->setUser(null);
+            }
+        }
 
         return $this;
     }

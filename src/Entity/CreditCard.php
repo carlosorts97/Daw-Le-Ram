@@ -43,19 +43,56 @@ class CreditCard
     private $owner;
 
     /**
-     * @var \Users
+     * @var \User
      *
-     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user", referencedColumnName="id_user")
      * })
      */
     private $user;
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="money",nullable=false)
+     */
+    private $money;
 
-    public function getNumber(): ?string
+    /**
+     * @return float
+     */
+    public function getMoney(): float
+    {
+        return $this->money;
+    }
+
+    /**
+     * @param float $money
+     */
+    public function setMoney(float $money): void
+    {
+        $this->money = 100000000;
+
+
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber()
     {
         return $this->number;
     }
+
+    /**
+     * @param string $number
+     */
+    public function setNumber(string $number): void
+    {
+        $this->number = $number;
+    }
+
+
 
     public function getCvv(): ?string
     {
@@ -93,12 +130,12 @@ class CreditCard
         return $this;
     }
 
-    public function getUser(): ?Users
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?Users $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -107,3 +144,4 @@ class CreditCard
 
 
 }
+
