@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * User
  *
+ * @ORM\Table(name="users"), @ORM\Index(name="fk_city_users", columns={"city"})})
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class User implements UserInterface
