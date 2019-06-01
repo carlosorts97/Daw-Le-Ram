@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
 
-    <h2>Empieza a vender con nosotros</h2>
-    <p>Puedes empezar buscando que productos tenemos disponibles para vender. Solo aceptamos productos nuevos, sin utilizar.</p>
-<div class="col-12 col-md-6 col-lg-6 text-center justify-content-center" id="buscador">
-    {{
-    render(
-        controller('App\\Controller\\SearcherController::searchAction')
-    )
-    }}
-</div>
+    <div class="container  margin_scroll">
+        <h2>Empieza a vender con nosotros</h2>
+        <p>Puedes empezar buscando que productos tenemos disponibles para vender. Solo aceptamos productos nuevos, sin utilizar.</p>
+        <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center margin_scroll" id="buscador">
+            {{
+            render(
+                controller('App\\Controller\\SearcherController::searchAction')
+            )
+            }}
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}
