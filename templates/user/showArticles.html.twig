@@ -1,45 +1,25 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-    <style type="text/css">
-        body {
-        }
-        table{
-            width: 500px;
-            margin-left: 50px;
-        }
-        td{
-            border-bottom: 1px solid grey;
-            padding:5px;
-        }
-        #new{
-            margin-left: 50px;
-            margin-bottom: 50px;
-        }
-        .bg-dark{
-            color:white;
-        }
-    </style>
-{% endblock %}
-{% block body %}
-    {% if is_granted("ROLE_ADMIN") %}
-        <div id="new">
-            <h1>Users Administration</h1>
-            <a class="btn btn-success" href="{{ path('app_createUser')}}">Nuevo Usuario</a>
-        </div>
 
-        <table>
-            <tr class="bg-dark">
-                <td>Email<td>
-                <td>Username<td>
-                <td></td>
-                <td></td>
-            </tr>
-            {% for article in articles %}
-                <tr>
-                    <td> {{ article.name }}<td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endif %}
+{% block error %}{% endblock %}
+
+{% block body %}
+    <div class="container margin_scroll signika">
+        <h3 class="">Mis Articulos</h3>
+    </div>
+    {% for size in sizes %}
+        <div class="container mt-5 mb-5 border-bottom">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="/img/camisetaPrueba.png" class="article_image_sm" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3>{{ size.article.name }}</h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6">Talla:<h5 class="text-secondary">{{ size.size }}</h5></div>
+                        <div class="col-lg-6">Precio:<h5 class="text-secondary">{{ size.price }}€</h5></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
