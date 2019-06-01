@@ -7,6 +7,7 @@ use App\Entity\Cities;
 use App\Entity\Countries;
 use App\Entity\Sizes;
 use App\Entity\Stock;
+use App\Entity\Sells;
 use App\Entity\Brands;
 use App\Form\NewArticleType;
 use App\Entity\Articles;
@@ -40,6 +41,45 @@ class ArticleController extends AbstractController
         return $this->render('article/article.html.twig', array(
             'article' => $article,
         ));
+    }
+
+    /**
+     * @Route("article/buy/{id}/{size}/{seller}", name="app_articleSize_buy")
+     */
+    public function buyArticle($id, $size, $seller)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
+            'article' => $id,
+            'user' =>$seller,
+            'size' =>$size
+
+        ]);
+        $article->getStock()->RemoveStock();
+
+        $idUser=$this->getUser();
+        $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
+        $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
+        dump($article);
+
+        //Create sells
+        $sell=new Sells();
+        $sell->setSeller($seller);
+        $sell->setBuyer($buyer);
+        $sell->setSize($size);
+        $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
+        $sell->setTotalPaid($article->getPrice()+10);
+
+        if($buyer->getCard() == null){
+            return $this->redirectToRoute('app_putCard');
+        }
+
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirectToRoute('app_homepage');
+
     }
 
     /**
