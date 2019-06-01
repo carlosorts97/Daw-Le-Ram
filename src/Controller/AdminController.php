@@ -135,7 +135,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/upProduct", name="app_uploadArticle")
+     * @Route("/admin/CreateProduct", name="app_createArticle")
      */
     public function uploadArticle(Request $Request)
     {
@@ -183,7 +183,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('app_homepage');
         }
         //render the form
-        return $this->render('article/upProduct.html.twig', [
+        return $this->render('article/createProduct.html.twig', [
             'form' => $form->createView()
         ]);
     }

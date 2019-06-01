@@ -126,9 +126,9 @@
                 <a class="btn btn-lg btn-success signika" href="{{ path('app_login') }}">Venta</a>
                 {% else %}
                     {% if is_granted("ROLE_ADMIN") %}
-                        <a class="btn btn-sm btn-success signika" href="{{ path('app_uploadArticle') }}">Subir articulo</a>
+                        <a class="btn btn-sm btn-success signika" href="{{ path('app_createArticle') }}">Subir articulo</a>
                     {% endif %}
-                    <a class="btn btn-sm btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a>
+                    <a class="btn btn-sm btn-success signika" href="{{ path('loadSearch') }}">Venta</a>
                 {% endif %}
 
             </div>
