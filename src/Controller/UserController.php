@@ -44,6 +44,7 @@ class UserController extends AbstractController
         $articles= 0;
         $i=0;
         $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
+        /*
         foreach ($sizes as $size) {
             $articles[$i] = $this->getDoctrine()->getRepository(Articles::class)->find($size->getArticle());
             $i=$i+1;
@@ -51,6 +52,11 @@ class UserController extends AbstractController
 
         return $this->render('user/showArticles.html.twig', [
             'articles' => $articles
+
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->findBy(['idArticle'=>$sizes]);
+           */
+        return $this->render('user/showArticles.html.twig', [
+            'sizes' => $sizes
         ]);
     }
     /**

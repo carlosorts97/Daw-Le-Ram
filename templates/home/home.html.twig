@@ -21,30 +21,31 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-center">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-4 text-center">
                 <h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3 text-right align-self-start login">
+            <div id="login" class="col-3 col-md-3 col-lg-3 text-center align-self-start pr-3">
                 {% if app.user == null %}
-                    <a class="login" href="{{ path('app_login') }}">Login</a>
-                    <a class="login" href="{{ path('app_register') }}">Sign Up</a>
+                    <a class="login col-12" href="{{ path('app_login') }}">Login</a>
+                    <a class="login col-12" href="{{ path('app_register') }}">Register</a>
                 {% else %}
-                    <ul>
+                    <ul class="hidden-md-down login">
                         <li class="dropdown">
-                            <a class="dropdown-toggle btn btn-secondary btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="btn btn-secondary btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="fas fa-user">  </span> {{ app.user.username }}
                             </a>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">Mis posts</a>
+                            <div class="dropdown-menu" aria-labelledby="login">
+                                <a class="dropdown-item" href="{{ path('app_showOrders') }}">Mis pedidos</a>
+                                <a class="dropdown-item" href="{{ path('app_showArticles') }}">Mis Articulos</a>
                                 <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="">Admin</a>
                                 {% endif %}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">
-                                    Cerrar Sesion <i class="fa fa-times" aria-hidden="true"></i>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                    Cerrar Sesion <em class="fa fa-times" aria-hidden="true"></em>
                                 </a>
                             </div>
                         </li>

@@ -259,4 +259,13 @@ form{
     .dropdown-item {
         font-size:12px;
     }
+
+}
+@media(max-width: 600px) {
+
+h3{font-size: 15px;}
+.btn-secondary{font-size: 14px;
+    margin-right: 10px;}
+.btn-secondary .fa-user {display: none;}
+.logo a{font-size: 12px; width: 30px}
 }
