@@ -66,7 +66,13 @@ class UserType extends AbstractType
             ])
             ->add('city', EntityType::class, [
                 'class' => Cities::class,
-                'choice_label' => 'name'])
+                'label' => ' ',
+                'choice_label' => 'name',
+                    'attr'=>[
+                        'class' => 'form-control',
+                    ]]
+            )
+
             ->add('address', TextType::class,[
                 'required' => 'required',
                 'label' => ' ',
@@ -81,7 +87,7 @@ class UserType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control'
                 ]
             ])
             ->add('plainpassword',RepeatedType::class,[

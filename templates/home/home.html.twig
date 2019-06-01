@@ -55,66 +55,68 @@
 
 
         <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
-            <div id="categorias" class="col-12 col-sm-12 col-md-3 col-lg-3 signika text-left">
+            <div id="categorias" class="col-12 col-md-3 col-lg-3 signika text-left">
+
                 <div class="dropdown show">
                     <a class="btn btn-lg btn-navegar signika dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu dropright border-right" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-submenu dropleft "><a class="dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
-                            <div class="dropdown-menu dropleft border-right">
-                                <a class="dropdown-item btn btn-lg" href="#">Todas</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Supreme</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Off-white</a>
-                                <a class="dropdown-item btn btn-lg" href="#">Vape</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
-                        <a class="dropdown-submenu"><a class="dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Todas</a>
-                                <a class="dropdown-item" href="#">Supreme</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                                <a class="dropdown-item" href="#">Off-white</a>
-                            </div>
-                        </a>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
+                        <div class="dropdown-menu dropleft border-right">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':3} )}}">Nike</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':10} )}}">Air Jordan</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':4} )}}">Adidas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':9} )}}">Yeezy</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':99} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12 text-center justify-content-center">
-                <form class="buscador form-inline mt-2 mt-md-0 justify-content-center">
-                    <input class="form-control col-12 col-md-6" type="text" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-default btn-lg col-12 col-md-1 lupa">
-                        <img src="img/lupa.png" height="26px">
-                    </button>
-                </form>
+            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center">
+                {{
+                render(
+                    controller('App\\Controller\\SearcherController::searchAction')
+                )
+                }}
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-3 col-12 mt-2 text-right">
+            <div class="col-12 col-md-3 col-lg-3 mt-2 text-right">
                 <a class="btn btn-success btn-lg signika col12" href="{{ path('app_uploadArticle') }}">Venta</a>
             </div>
         </div>
@@ -144,12 +146,11 @@
             <h5>Articulos</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
     <div class="row mb-5">
         {% for stH in stHype %}
-            <a href="google.com" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+            <a href="{{ path('app_showArticle',{'id': stH.id_article, 'category':stH.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
                     <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
                     <p class="text-left">{{ stH.image }}</p>
                     <p class="text-left">{{ stH.name }}</p>
@@ -164,12 +165,11 @@
             <h5>Last arrivals</h5>
         </div>
         <div class="col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
     <div class="row mb-5">
         {% for stL in stLast %}
-        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+        <a href="{{ path('app_showArticle',{'id': stL.id_article, 'category':stL.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/camisetaPrueba.png') }}" width="170px">
             <p class="text-left">{{ stL.image }}</p>
             <p class="text-left">{{ stL.name }}</p>
@@ -192,13 +192,12 @@
             <h5>Articulos</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
-            <h5>Ver más</h5>
         </div>
     </div>
 
     <div class="row mb-5">
         {% for snkH in snkHype %}
-            <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+            <a href="{{ path('app_showArticle',{'id': snkH.id_article, 'category':snkH.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
                 <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
                 <p class="text-left">{{ snkH.image }}</p>
                 <p class="text-left">{{ snkH.name }}</p>
@@ -217,7 +216,7 @@
     </div>
     <div class="row mb-5">
         {% for snkL in snkLast %}
-        <a class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
+        <a href="{{ path('app_showArticle',{'id': snkL.id_article, 'category':snkL.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
             <img src="{{ asset('img/sneaker.jpg') }}" width="170px">
             <p class="text-left">{{ snkL.image }}</p>
             <p class="text-left">{{ snkL.name }}</p>
@@ -229,7 +228,7 @@
 
 <div class="container text-center">
     <div class="row text-center justify-content-center">
-        <h3 class="col-6 btn btn-navegar text-center p-3 mb-5 signika">Explorar todos los articulos disponibles</h3>
+        <a class="col-6 btn btn-navegar text-center p-3 mb-5 signika" href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}">Explorar todos los articulos disponibles</a>
     </div>
 
 </div>
@@ -324,6 +323,7 @@
 
 </script>
 <script>
+    /*SLIDE DEL BOTON STREETWEAR Y SNEAKERS*/
     $( "#streetwear" ).click(function () {
         if ( $( ".streetwear" ).is( ":hidden" ) ) {
             $( ".streetwear" ).slideDown( "slow" );
@@ -340,6 +340,22 @@
             $("#sneakers").addClass("subline_select")
             $("#streetwear").removeClass("subline_select")
         }
+    });
+
+    /*SUB-MENU Categorias*/
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+
+
+        $(this).parents('dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass("show");
+        });
+
+        return false;
     });
 </script>
 </body>

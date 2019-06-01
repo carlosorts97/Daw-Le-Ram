@@ -401,94 +401,427 @@ class PruebaController extends AbstractController
     }
 
     /**
-     * @Route("/pruena", name="prueba_home")
+     * @Route("/article/list/{category}/{brand}/hype", name="app_articleslist_hype")
      */
-    public function show_article()
+    public function listArticleFilterHyped($category, $brand)
+    {
+        $filter="Más comprados";
+        $title = null;
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $conn = $em->getConnection();
+        if ($brand == 0) {
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category='.$category.' AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+        }
+        /*Este elseif para cargar los articulos de categorias>resto de marcas*/
+        elseif ($brand==66){
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND (brand<>1 AND brand<>5 AND brand<>14) AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+            $title = "Resto de marcas";
+        }
+        /*Este elseif para cargar los articulos de categorias>resto de marcas*/
+        elseif ($brand==99){
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND (brand<>3 AND brand<>4 AND brand<>5 AND brand<>9 AND brand<>10)
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN=null;
+            $title = "Resto de marcas";
+        }
+        else {
+            $sql = '
+            SELECT id_article, name,articles.retail_date, articles.name,category,brand,count(id_sell) AS compras ,AVG(price) AS price,image
+            FROM sells
+            LEFT JOIN articles ON sells.article = articles.id_article
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE category=' . $category . ' AND brand='.$brand.' AND price > 0
+            group by id_article, name,articles.retail_date, articles.name,category,brand,image
+            ORDER BY compras DESC
+            LIMIT 3
+            ';
+            $category = $this->getDoctrine()->getRepository(Category::class)->find($category);
+            $brandN= $this->getDoctrine()->getRepository(Brands::class)->find($brand);
+        }
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $articles= $stmt->fetchAll();
+
+        return $this->render('article/index.html.twig', [
+            'articles' => $articles,
+            'category' => $category,
+            'brand' => $brand,
+            'brandN' => $brandN,
+            'filter' => $filter,
+            'title' => $title
+        ]);
+    }
+
+    /*------------------------------------------Filtros de busqueda-------------------------------------------------------------------------*/
+
+    /**
+     * @Route("/article/show/{id}/{category}", name="app_showArticle")
+     */
+    public function show_article($id, $category)
     {
 
         $article = $this->getDoctrine()
             ->getRepository(Articles::class)
-            ->find(2);
+            ->find($id);
 
         $em = $this->getDoctrine()->getEntityManager();
         $conn = $em->getConnection();
-        $id_article = 5;
 
         $sql = '
             SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE article=' . $id_article . ' AND size="S" AND price > 0
+            WHERE category = '.$category.' AND price > 0
             GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             ORDER BY price ASC
-            LIMIT 1
+            LIMIT 3
             ';
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $article_S= $stmt->fetchAll();
+        $recommended= $stmt->fetchAll();
 
-        $sql = '
+        if($category == 4)
+        {
+            $sql = '
             SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE article=' . $id_article . ' AND size="M" AND price > 0
+            WHERE article=' . $id . ' AND size="36" AND price > 0
             GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             ORDER BY price ASC
             LIMIT 1
             ';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
-        $article_M= $stmt->fetchAll();
+            $article_36= $stmt->fetchAll();
 
-        $sql = '
+            $sql = '
             SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE article=' . $id_article . ' AND size="L" AND price > 0
+            WHERE article=' . $id . ' AND size="37" AND price > 0
             GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             ORDER BY price ASC
             LIMIT 1
             ';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
-        $article_L= $stmt->fetchAll();
+            $article_37= $stmt->fetchAll();
 
-        $sql = '
-            SELECT articles.id_article, articles.name, articles.retail_date, articles.name, 
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE article=' . $id_article . ' AND size="XL" AND price > 0
+            WHERE article=' . $id . ' AND size="38" AND price > 0
+            GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_38= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="39" AND price > 0
             GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
             articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
             ORDER BY price ASC
             LIMIT 1
             ';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
-        $article_XL= $stmt->fetchAll();
+            $article_39= $stmt->fetchAll();
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_38= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="39" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_39= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="40" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_40= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="41" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_41= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="42" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_42= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="43" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_43= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id. ' AND size="44" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_44= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="45" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_45= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="46" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_46= $stmt->fetchAll();
+
+            return $this->render('article/article_sneaker.html.twig', [
+                'article_36' => $article_36,
+                'article_37' => $article_37,
+                'article_38' => $article_38,
+                'article_39' => $article_39,
+                'article_40' => $article_40,
+                'article_41' => $article_41,
+                'article_42' => $article_42,
+                'article_43' => $article_43,
+                'article_44' => $article_44,
+                'article_45' => $article_45,
+                'article_46' => $article_46,
+                'recommended'=> $recommended,
+                'article' => $article
+            ]);
+
+        }
+        else{
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="S" AND price > 0
+            GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_S= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="M" AND price > 0
+            GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_M= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="L" AND price > 0
+            GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_L= $stmt->fetchAll();
+
+            $sql = '
+            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            from articles
+            LEFT JOIN sizes ON articles.id_article = sizes.article
+            WHERE article=' . $id . ' AND size="XL" AND price > 0
+            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
+            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            ORDER BY price ASC
+            LIMIT 1
+            ';
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $article_XL= $stmt->fetchAll();
+        }
 
         return $this->render('article/article.html.twig', [
             'article_S' => $article_S,
             'article_M' => $article_M,
             'article_L' => $article_L,
             'article_XL' => $article_XL,
+            'recommended' => $recommended,
             'article' => $article
         ]);
-        ;
     }
 }

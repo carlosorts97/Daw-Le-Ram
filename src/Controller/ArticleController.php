@@ -49,13 +49,15 @@ class ArticleController extends AbstractController
         $article = new Sizes();
         $idUser= $this->getUser();
         $stockUpdate = null;
-
+        $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
+        $imagen=$a->getImage();
         //crear form
         $form = $this->createForm(NewSizeType::class, $article);
         //handle the request
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $article->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
+
+            $article->setArticle($a);
 
             $article->setUser($idUser);
 
@@ -77,7 +79,6 @@ class ArticleController extends AbstractController
             }
 
 
-
             $article = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -92,7 +93,7 @@ class ArticleController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'imagen'=>$imagen
         ]);
     }
     /**

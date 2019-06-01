@@ -1,0 +1,719 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container-fluid margin_scroll mb-3">
+        <a href="{{ path('app_listArticles',{'category': article.category.idCategory, 'brand':0} )}}" class="btn btn-light align-self-center col-12 col-sm-2 col-md-2 col-lg-1">{{ article.category.name }}</a>
+        >
+        <a href="{{ path('app_listArticles',{'category': article.category.idCategory, 'brand': article.brand.idBrand} )}}" class="btn btn-light col-12 col-sm-2 col-md-2 col-lg-1">{{ article.brand.name }}</a>
+        >
+        <a class="btn btn-light col-sm-2 col-md-2 col-lg-2 col-12">{{ article.name }}</a>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center align-items-end">
+            <div>
+                 <div class="btn signika subline mr-2 col-12" id="36">Tallas:</div>
+            </div>
+            {%  if article_36 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="36">36</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2"  id="36">36</div>
+                </div>
+            {% endif %}
+            {%  if article_37 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="37">37</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="37">37</div>
+                </div>
+            {% endif %}
+            {%  if article_38 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="38">38</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="38">38</div>
+                </div>
+            {% endif %}
+            {%  if article_39 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="39">39</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="39">39</div>
+                </div>
+            {% endif %}
+            {%  if article_40 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="40">40</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="40">40</div>
+                </div>
+            {% endif %}
+            {%  if article_41 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="41">41</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="41">41</div>
+                </div>
+            {% endif %}
+            {%  if article_42 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="42">42</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="42">42</div>
+                </div>
+            {% endif %}
+            {%  if article_43 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="43">43</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="43">43</div>
+                </div>
+            {% endif %}
+            {%  if article_44 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="44">44</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="44">44</div>
+                </div>
+            {% endif %}
+            {%  if article_45 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="45">45</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="45">45</div>
+                </div>
+            {% endif %}
+            {%  if article_46 == null  %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2 size_out" id="46">46</div>
+                </div>
+            {% else %}
+                <div>
+                    <div class="btn btn-light signika subline mr-2" id="46">46</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if article_36 != null %}
+        <div class="container cont_36 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_36[0].name}}</b></h3>
+                    <p>Descripción: {{ article_36[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_36[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_36[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_37 != null %}
+        <div class="container cont_37 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_37[0].name}}</b></h3>
+                    <p>Descripción: {{ article_37[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_37[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_37[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_38 != null %}
+        <div class="container cont_38 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_38[0].name}}</b></h3>
+                    <p>Descripción: {{ article_38[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_38[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_38[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_39 != null %}
+        <div class="container cont_39 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_39[0].name}}</b></h3>
+                    <p>Descripción: {{ article_39[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_39[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_39[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_40 != null %}
+        <div class="container cont_40 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_40[0].name}}</b></h3>
+                    <p>Descripción: {{ article_40[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_40[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_40[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_41 != null %}
+        <div class="container cont_41 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_41[0].name}}</b></h3>
+                    <p>Descripción: {{ article_41[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_41[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_41[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_42 != null %}
+        <div class="container cont_42 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_42[0].name}}</b></h3>
+                    <p>Descripción: {{ article_42[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_42[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_42[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_43 != null %}
+        <div class="container cont_43 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_43[0].name}}</b></h3>
+                    <p>Descripción: {{ article_43[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_43[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_43[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_44 != null %}
+        <div class="container cont_44 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_44[0].name}}</b></h3>
+                    <p>Descripción: {{ article_44[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_44[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_44[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_45 != null %}
+        <div class="container cont_45 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_45[0].name}}</b></h3>
+                    <p>Descripción: {{ article_45[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_45[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_45[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if article_46 != null %}
+        <div class="container cont_46 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article_46[0].name}}</b></h3>
+                    <p>Descripción: {{ article_46[0].description }}</p>
+                    <h3 >Talla: <span class="text-secondary">{{ article_46[0].size }}</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_46[0].price }}€</span></h4></div>
+                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
+                    </div>
+                    <div class="col-lg-12 text-center mt-3">
+                        <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="row border-bottom">
+            <div class="col-lg-6 text-left signika">
+                <h5>Le recomendamos...</h5>
+            </div>
+            <div class="col-lg-6 text-right signika">
+            </div>
+        </div>
+        <div class="row mt-3 mb-5">
+            {% for r in recommended %}
+            <a href="{{ path('app_showArticle',{'id': r.id_article, 'category':r.category} )}}" class="btn col-lg-4 text-center">
+                <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_sm" alt="Imagen del producto">
+                <p class="text-left">{{ r.image }}</p>
+                <p class="text-left">{{ r.name }}</p>
+                <p class="text-left">{{ r.price }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $( "#36" ).click(function () {
+        if ( $( ".cont_36" ).is( ":hidden" ) ) {
+            $( ".cont_36" ).slideDown( "slow" );
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#36").addClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#37" ).click(function () {
+        if ( $( ".cont_37" ).is( ":hidden" ) ) {
+            $( ".cont_37" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#37").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#38" ).click(function () {
+        if ( $( ".cont_38" ).is( ":hidden" ) ) {
+            $( ".cont_38" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#38").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#39" ).click(function () {
+        if ( $( ".cont_39" ).is( ":hidden" ) ) {
+            $( ".cont_39" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#39").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#40" ).click(function () {
+        if ( $( ".cont_40" ).is( ":hidden" ) ) {
+            $( ".cont_40" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#40").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#41" ).click(function () {
+        if ( $( ".cont_41" ).is( ":hidden" ) ) {
+            $( ".cont_41" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#41").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#42" ).click(function () {
+        if ( $( ".cont_42" ).is( ":hidden" ) ) {
+            $( ".cont_42" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#42").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#43" ).click(function () {
+        if ( $( ".cont_43" ).is( ":hidden" ) ) {
+            $( ".cont_43" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#43").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#44" ).click(function () {
+        if ( $( ".cont_44" ).is( ":hidden" ) ) {
+            $( ".cont_44" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#44").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#45").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#45" ).click(function () {
+        if ( $( ".cont_45" ).is( ":hidden" ) ) {
+            $( ".cont_45" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_46" ).hide("slow");
+
+            $("#45").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#46").removeClass("size_select")
+        }
+    });
+    $( "#46" ).click(function () {
+        if ( $( ".cont_46" ).is( ":hidden" ) ) {
+            $( ".cont_46" ).slideDown( "slow" );
+            $( ".cont_36" ).hide("slow");
+            $( ".cont_37" ).hide("slow");
+            $( ".cont_38" ).hide("slow");
+            $( ".cont_39" ).hide("slow");
+            $( ".cont_40" ).hide("slow");
+            $( ".cont_41" ).hide("slow");
+            $( ".cont_42" ).hide("slow");
+            $( ".cont_43" ).hide("slow");
+            $( ".cont_44" ).hide("slow");
+            $( ".cont_45" ).hide("slow");
+
+            $("#46").addClass("size_select")
+            $("#36").removeClass("size_select")
+            $("#37").removeClass("size_select")
+            $("#38").removeClass("size_select")
+            $("#39").removeClass("size_select")
+            $("#40").removeClass("size_select")
+            $("#41").removeClass("size_select")
+            $("#42").removeClass("size_select")
+            $("#43").removeClass("size_select")
+            $("#44").removeClass("size_select")
+            $("#45").removeClass("size_select")
+        }
+    });
+</script>
+{% endblock %}
