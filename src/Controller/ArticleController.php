@@ -214,5 +214,18 @@ class ArticleController extends AbstractController
 
 
     }
+    /**
+     * @Route("/loadSearcher", name="loadSearch")
+     */
+    public function searchear()
+    {
+        $i=0;
+        $articles=$this->getDoctrine()->getRepository(Articles::class)->findAll();
+        foreach ($articles as $a){
+            $articulos[$i]=$a->getName();
+            $i=$i+1;
+        }
+        return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
+    }
 
 }
