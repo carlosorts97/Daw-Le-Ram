@@ -502,12 +502,12 @@ class PruebaController extends AbstractController
 
         $sql = '
             SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
-            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            articles.category,articles.brand, articles.image,AVG(sizes.price) AS price
             from articles
             LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE category = '.$category.' AND price > 0
+            WHERE category = '.$category.' AND price > 0 AND id_article<>'.$id.'
             GROUP BY articles.id_article, articles.name,articles.description, articles.retail_date, articles.name, 
-            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
+            articles.category,articles.brand, articles.image
             ORDER BY price ASC
             LIMIT 3
             ';
@@ -570,27 +570,6 @@ class PruebaController extends AbstractController
 
             $article_38= $stmt->fetchAll();
 
-            $sql = '
-            SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
-            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
-            from articles
-            LEFT JOIN sizes ON articles.id_article = sizes.article
-            WHERE article=' . $id . ' AND size="39" AND price > 0
-            GROUP BY articles.id_article, articles.name, articles.retail_date, articles.name, 
-            articles.category,articles.brand, articles.image,sizes.price,sizes.user,sizes.size,sizes.stock
-            ORDER BY price ASC
-            LIMIT 1
-            ';
-
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-
-            $article_39= $stmt->fetchAll();
-
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-
-            $article_38= $stmt->fetchAll();
 
             $sql = '
             SELECT articles.id_article, articles.name, articles.description, articles.retail_date, articles.name, 
