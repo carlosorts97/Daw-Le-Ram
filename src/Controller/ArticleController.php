@@ -88,50 +88,46 @@ class ArticleController extends AbstractController
     public function uploadA3rticle(Request $Request, $id)
     {
 
-        $article = new Sizes();
+        $size = new Sizes();
         $idUser= $this->getUser();
         $stockUpdate = null;
 
-
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
 
-
-
         if($a->getCategory()->getIdCategory()!=4) {
-            $form = $this->createForm(NewSizeType::class, $article);
+            $form = $this->createForm(NewSizeType::class, $size);
         }else{
-            $form = $this->createForm(NewSneakerType::class, $article);
+            $form = $this->createForm(NewSneakerType::class, $size);
         }
         //handle the request
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $article->setArticle($a);
-            $size=$Request->query->get('size');
+            $size->setArticle($a);
 
-            $article->setUser($idUser);
+            $size->setUser($idUser);
 
             $stock= $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
-                'size' => $article->getSize(),
+                'size' => $size->getSize(),
                 'article' => $this->getDoctrine()->getRepository(Articles::class)->find($id),
             ]);
 
             if($stock == null){
                 $stock = new Stock();
                 $stock->AddStock();
-                $article->setStock($stock);
+                $size->setStock($stock);
             }else{
                 $stockUpdate= $stock->getStock();
 
                 $stockUpdate->AddStock();
 
-                $article->setStock($stockUpdate);
+                $size->setStock($stockUpdate);
             }
-            
-            $article = $form->getData();
+
+            $size = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
+            $entityManager->persist($size);
             if($stockUpdate == null){
                 $entityManager->persist($stock);
             }else{

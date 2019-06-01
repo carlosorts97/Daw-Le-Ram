@@ -54,6 +54,23 @@ class UserController extends AbstractController
         ]);
     }
     /**
+     * @Route("/user/articles/{idSize}", name="app_showArticle")
+     */
+    public function showArticle($idSize)
+    {
+        $id = $this->getUser();
+
+        $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy(['article'=>$idSize, 'user'=>$id]);
+
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
+
+
+
+        return $this->render('user/showArticles.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+    /**
      * @Route("/user/orders", name="app_showOrders")
      */
     public function showOrders()
