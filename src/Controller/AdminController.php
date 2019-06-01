@@ -150,20 +150,19 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // $file stores the uploaded PDF file
             /** @var File $files */
-            $files = $Request->files->get('post')['image'];
+            $files = $article->getImage();
 
-            foreach ($files as $file){
-                $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $fileName = $this->generateUniqueFileName().'.'.$files->guessExtension();
 
-                try {
-                    $file->move(
-                        $this->getParameter('brochures_directory'),
-                        $fileName
-                    );
-                } catch (FileException $e){
+            try {
+                $files->move(
+                    $this->getParameter('brochures_directory'),
+                    $fileName
+                );
+            } catch (FileException $e){
 
-                }
             }
+
 
 
             $article = $form->getData();

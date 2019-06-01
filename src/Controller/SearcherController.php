@@ -43,7 +43,7 @@ class SearcherController extends Controller
             $i=$i+1;
         }
 
-        return $this->render('search/searcher.html.twig', ['articles'=>$articles]);
+        return $this->render('users/search.html.twig', ['articles'=>$articles]);
     }
     /**
      *

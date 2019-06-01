@@ -46,6 +46,7 @@ class ArticleController extends AbstractController
      */
     public function uploadA3rticle(Request $Request, $id)
     {
+
         $article = new Sizes();
         $idUser= $this->getUser();
         $stockUpdate = null;
