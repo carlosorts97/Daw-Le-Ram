@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,76 +19,40 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use App\Entity\Articles;
-use App\Entity\Countries;
-use App\Entity\Sizes;
-use App\Form\EditUserType;
+use App\Controller\PruebaController;
 
-use App\Entity\User;
-use App\Form\UserType;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-class SearcherController extends AbstractController
+class SearcherController extends Controller
 {
     /**
-     * @Route("/search", name="adjkjkf")
+     * Creates a new ActionItem entity.
+     *
+     * @Route("/search", name="ajax_search")
      */
-    public function index()
+    public function searchAction(Request $request)
     {
-        return $this->render('search/searcher.html.twig');
-    }
-    public function searchBar()
-    {
-        $form = $this->createFormBuilder(null)
-            ->setAction($this->generateUrl('handle_search'))
-            ->add("query", TextType::class, [
-                'attr' => [
-                    'placeholder'   => 'Enter search query...'
-                ]
-            ])
-            ->add("submit", SubmitType::class)
-            ->getForm()
-        ;
-        return $this->render('prueba/searcher.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-    /**
-     * @Route("/handleSearch/{_query?}", name="handle_search", methods={"POST", "GET"})
-     */
-    public function handleSearchRequest(Request $request, $_query)
-    {
-        $em = $this->getDoctrine()->getManager();
-        if ($_query)
-        {
-            $data = $em->getRepository(Articles::class)->findBy($_query);
-        } else {
-            $data = $em->getRepository(Articles::class)->findAll();
+        $i=0;
+        $articles=$this->getDoctrine()->getRepository(Articles::class)->findAll();
+        foreach ($articles as $a){
+            $articulos[$i]=$a->getName();
+            $i=$i+1;
         }
-        // iterate over all the resuls and 'inject' the image inside
-        // setting up the serializer
-        $normalizers = [
-            new ObjectNormalizer()
-        ];
-        $encoders =  [
-            new JsonEncoder()
-        ];
-        $serializer = new Serializer($normalizers, $encoders);
-        $data = $serializer->serialize($data, 'json');
-        return new JsonResponse($data, 200, [], true);
-    }
-    /**
-     * @Route("/arti/{id?}", name="article_page", methods={"GET"})
-     */
-    public function citySingle(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $city = null;
+        $countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
 
-        if ($id) {
-            $city = $em->getRepository(Articles::class)->findOneBy(['id' => $id]);
-        }
-        return $this->render('prueba/article.html.twig', [
-            'city'  =>      $city
-        ]);
+        return $this->render('search/searcher.html.twig', ['articles'=>$articles]);
     }
+    /**
+     *
+     * @Route("/searchingada", name="posearch")
+     */
+    public function searchAsssssssction(Request $request)
+    {
+
+        $username=$request->query->get('myCountry');
+        $articles=$this->getDoctrine()->getRepository(Articles::class)->findOneBy(array('name'=>$username));
+        $id=$articles->getIdArticle();
+        $category=$articles->getCategory()->getIdCategory();
+        
+        return $this->redirectToRoute('app_homepage');
+    }
+
 }
