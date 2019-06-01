@@ -157,7 +157,7 @@ class User implements UserInterface
         return $this->card;
     }
 
-    public function addComment(CreditCard $card): self
+    public function addCard(CreditCard $card): self
     {
         if (!$this->card->contains($card)) {
             $this->card[] = $card;
@@ -167,7 +167,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeComment(CreditCard $card): self
+    public function removeCard(CreditCard $card): self
     {
         if ($this->card->contains($card)) {
             $this->card->removeElement($card);
