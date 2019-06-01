@@ -28,6 +28,10 @@ body {
     color: black;
 }
 
+li{
+    list-style: none;
+}
+
 .divisor{
     border-bottom: 1px solid darkgray;
 }
@@ -226,4 +230,12 @@ form{
 
 .dropdown-item:hover{
     border-right: 3px solid #7A306C;
+}
+@media(max-width: 600px) {
+
+    h3{font-size: 15px;}
+    .btn-secondary{font-size: 14px;
+        margin-right: 10px;}
+    .btn-secondary .fa-user {display: none;}
+    .logo a{font-size: 12px; width: 30px}
 }

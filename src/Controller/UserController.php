@@ -39,9 +39,11 @@ class UserController extends AbstractController
     {
         $id = $this->getUser();
         $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
-        $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
-        return $this->render('admin/index.html.twig', [
-            'articles' => $articles
+
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->findBy(['idArticle'=>$sizes]);
+
+        return $this->render('user/showArticles.html.twig', [
+            'sizes' => $sizes
         ]);
     }
     /**
