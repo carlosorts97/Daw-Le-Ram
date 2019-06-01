@@ -13,6 +13,7 @@ use App\Entity\Sizes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class NewSizeType extends AbstractType
 {
     /**
@@ -28,13 +29,18 @@ class NewSizeType extends AbstractType
         // this validation, set the 'required' attribute to 'false':
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
-            ->add('size', null, [
-                'attr' => ['autofocus' => true, 'class'=>'form-control'],
-                'label' => 'size',
-            ])
             ->add('price', null, [
                 'attr' => ['rows' => 20, 'class'=>'form-control'],
                 'label' => 'Precio'
+            ])
+            ->add('size', ChoiceType::class,[
+                'choices' => [
+                    'XL' => "XL",
+                    'L' => "L",
+                    'M' => "M",
+                    'S' => "S"
+                ],
+
             ])
 
         ;

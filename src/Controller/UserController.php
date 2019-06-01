@@ -186,21 +186,6 @@ class UserController extends AbstractController
         return new JsonResponse($data, 200, [], true);
     }
     /**
-     * @Route("/city/{id?}", name="city_page", methods={"GET"})
-     */
-    public function citySingle(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $city = null;
-
-        if ($id) {
-            $city = $em->getRepository(Cities::class)->findOneBy(['id' => $id]);
-        }
-        return $this->render('home/city.html.twig', [
-            'city'  =>      $city
-        ]);
-    }
-    /**
      * @Route("/user/card",name="app_addCard")
      */
     public function addCard (Request $request){
