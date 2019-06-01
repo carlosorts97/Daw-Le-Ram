@@ -2,8 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: linux
+<<<<<<< HEAD
  * Date: 20/05/19
  * Time: 18:18
+=======
+ * Date: 01/06/19
+ * Time: 13:31
+>>>>>>> borja
  */
 
 namespace App\Form;

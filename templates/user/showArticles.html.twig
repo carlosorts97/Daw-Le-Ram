@@ -35,12 +35,9 @@
                 <td></td>
                 <td></td>
             </tr>
-            {% for user in users %}
+            {% for article in articles %}
                 <tr>
-                    <td> {{ articles.name }}<td>
-                    <td> {{ user.email }}<td>
-                    <td><a class="btn btn-secondary" href="{{ path('app_user_edit',{'id':user.id} )}}">Edit</a></td>
-                    <td><a class="btn btn-danger" href="{{ path('app_user_delete',{'id':user.id} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este usuario?')">X</a></td>
+                    <td> {{ article.name }}<td>
                 </tr>
             {% endfor %}
         </table>
