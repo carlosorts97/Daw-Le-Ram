@@ -14,107 +14,41 @@
     <div class="container mb-5">
         <div class="row justify-content-center align-items-end">
             <div>
-                 <div class="btn signika subline mr-2 col-12" id="36">Tallas:</div>
+                 <div class="btn signika subline mr-2 col-12">Tallas:</div>
             </div>
-            {%  if article_36 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="36">36</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2"  id="36">36</div>
                 </div>
-            {% endif %}
-            {%  if article_37 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="37">37</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="37">37</div>
                 </div>
-            {% endif %}
-            {%  if article_38 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="38">38</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="38">38</div>
                 </div>
-            {% endif %}
-            {%  if article_39 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="39">39</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="39">39</div>
                 </div>
-            {% endif %}
-            {%  if article_40 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="40">40</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="40">40</div>
                 </div>
-            {% endif %}
-            {%  if article_41 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="41">41</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="41">41</div>
                 </div>
-            {% endif %}
-            {%  if article_42 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="42">42</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="42">42</div>
                 </div>
-            {% endif %}
-            {%  if article_43 == null  %}
                 <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="43">43</div>
+                    <div class="btn btn-light signika subline mr-2 size_select" id="43">43</div>
                 </div>
-            {% else %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2" id="43">43</div>
-                </div>
-            {% endif %}
-            {%  if article_44 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="44">44</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="44">44</div>
                 </div>
-            {% endif %}
-            {%  if article_45 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="45">45</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="45">45</div>
                 </div>
-            {% endif %}
-            {%  if article_46 == null  %}
-                <div>
-                    <div class="btn btn-light signika subline mr-2 size_out" id="46">46</div>
-                </div>
-            {% else %}
                 <div>
                     <div class="btn btn-light signika subline mr-2" id="46">46</div>
                 </div>
-            {% endif %}
         </div>
     </div>
 
@@ -130,10 +64,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_36[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_36[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_36 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">36</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -155,10 +107,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_37[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_37[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_37 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">37</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -180,10 +150,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_38[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_38[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_38 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">38</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -205,10 +193,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_39[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_39[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_39 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">39</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -230,10 +236,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_40[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_40[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_40 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">40</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -255,10 +279,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_41[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_41[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_41 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">41</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -280,10 +322,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_42[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_42[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_42 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">42</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -305,10 +365,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_43[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_43[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_43 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">43</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -330,10 +408,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_44[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_44[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_44 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">44</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -355,10 +451,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_45[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_45[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_45 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">45</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -380,10 +494,28 @@
                     <h3 >Talla: <span class="text-secondary">{{ article_46[0].size }}</span></h3>
                     <div class="row mt-3">
                         <div class="col-lg-6"><h4>Precio:<span class="text-secondary">{{ article_46[0].price }}€</span></h4></div>
-                        <div class="col-lg-6"><h4>Envio:<span class="text-secondary">10€</span></h4></div>
                     </div>
                     <div class="col-lg-12 text-center mt-3">
                         <div class="btn btn-navegar col-lg-10 mb-2 ">Comprar</div>
+                    </div>
+                    <div class="col-lg-12 text-center mb-5">
+                        <div class="btn btn-success col-lg-10 mb-2">Vender</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container cont_46 mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_lg" alt="Imagen del producto">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="mb-3"><b>{{ article.name}}</b></h3>
+                    <p>Descripción: {{ article.description }}</p>
+                    <h3 >Talla: <span class="text-secondary">46</span></h3>
+                    <div class="row mt-3">
+                        <div class="col-lg-6"><h5 class="text-danger">Fuera de Stock</h5></div>
                     </div>
                     <div class="col-lg-12 text-center mb-5">
                         <div class="btn btn-success col-lg-10 mb-2">Vender</div>
@@ -407,7 +539,7 @@
                 <img src="{{ asset('img/camisetaPrueba.png') }}" class="article_image_sm" alt="Imagen del producto">
                 <p class="text-left">{{ r.image }}</p>
                 <p class="text-left">{{ r.name }}</p>
-                <p class="text-left">{{ r.price }}</p>
+                <p class="text-left">{{ r.price | number_format }}€</p>
             </a>
             {% endfor %}
         </div>
