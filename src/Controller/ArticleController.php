@@ -165,8 +165,18 @@ class ArticleController extends AbstractController
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
-
             $article->setUser($idUser);
+            
+            $stock = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
+                'size' => $article->getSize(),
+                'article' => $this->getDoctrine()->getRepository(Articles::class)->find($id),
+            ]);
+
+            $stockUpdate = $stock->getStock();
+
+            $stockUpdate->AddStock();
+
+            $article->setStock($stockUpdate);
 
 
 
