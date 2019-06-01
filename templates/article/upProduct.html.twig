@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
     <div class="col-lg-4 box-form margin_scroll">
         <h2>Register, please</h2>
         {{ form_start(form) }}
@@ -10,6 +8,27 @@
         <input type="submit" class="btn btn-success" value="Register">
         {{ form_errors(form) }}
         {{ form_end(form) }}
-
+        {%   if article.category.idCategory !=4 %}
+            <select id="mySelect">
+                <option>XL</option>
+                <option>L</option>
+                <option>M</option>
+                <option>S</option>
+            </select>
+        {% else %}
+            <select id="mySelect">
+                <option>36</option>
+                <option>37</option>
+                <option>38</option>
+                <option>39</option>
+                <option>40</option>
+                <option>41</option>
+                <option>42</option>
+                <option>43</option>
+                <option>44</option>
+                <option>45</option>
+                <option>46</option>
+            </select>
+        {% endif %}
     </div>
 {% endblock %}

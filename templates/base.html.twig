@@ -125,11 +125,12 @@
                 {% if app.user == null %}
                 <a class="btn btn-lg btn-success signika" href="{{ path('app_login') }}">Venta</a>
                 {% else %}
-                <a class="btn btn-sm btn-success signika" href="">Venta</a>
-                {% endif %}
                     {% if is_granted("ROLE_ADMIN") %}
                         <a class="btn btn-sm btn-success signika" href="{{ path('app_uploadArticle') }}">Subir articulo</a>
                     {% endif %}
+                    <a class="btn btn-sm btn-success signika" href="{{ path('app_uploadArticle') }}">Venta</a>
+                {% endif %}
+
             </div>
         </div>
     </div>

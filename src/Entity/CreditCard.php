@@ -72,8 +72,6 @@ class CreditCard
     public function setMoney(float $money): void
     {
         $this->money = 100000000;
-
-
     }
 
     /**

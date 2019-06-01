@@ -49,15 +49,16 @@ class ArticleController extends AbstractController
         $article = new Sizes();
         $idUser= $this->getUser();
         $stockUpdate = null;
+
+
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
-        $imagen=$a->getImage();
+
         //crear form
         $form = $this->createForm(NewSizeType::class, $article);
         //handle the request
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $article->setArticle($a);
+            $article->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
 
             $article->setUser($idUser);
 
@@ -77,8 +78,7 @@ class ArticleController extends AbstractController
 
                 $article->setStock($stockUpdate);
             }
-
-
+            
             $article = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -93,9 +93,11 @@ class ArticleController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView(), 'imagen'=>$imagen
+            'form' => $form->createView(), 'article'=>$a
         ]);
     }
+
+
     /**
      * @Route("/editUploadedArticle/{id}", name="app_editUpArt")
      */
@@ -106,8 +108,8 @@ class ArticleController extends AbstractController
         $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
             'user' =>$idUser
-
         ]);
+        $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         //crear form
         $form = $this->createForm(NewSizeType::class, $article);
         //handle the request
@@ -141,7 +143,7 @@ class ArticleController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'article'=>$a
         ]);
     }
 
