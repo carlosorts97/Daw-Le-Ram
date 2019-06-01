@@ -164,7 +164,6 @@ class ArticleController extends AbstractController
                 'article' => $this->getDoctrine()->getRepository(Articles::class)->find($id),
             ]);
 
-
             $stockUpdate = $stock->getStock();
 
             $stockUpdate->AddStock();

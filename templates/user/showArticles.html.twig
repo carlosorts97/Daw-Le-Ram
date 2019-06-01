@@ -18,6 +18,8 @@
                         <div class="col-lg-6">Talla:<h5 class="text-secondary">{{ size.size }}</h5></div>
                         <div class="col-lg-6">Precio:<h5 class="text-secondary">{{ size.price }}€</h5></div>
                     </div>
+                    <a class="btn btn-secondary text-light" href="{{ path('app_editUpArt',{'id': size.article.idArticle} )}}">Editar</a>
+                    <a class="btn btn-danger text-light" href="{{ path('app_articleSize_delete',{'id': size.article.idArticle, 'size':size.size} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este usuario?')">X</a>
                 </div>
             </div>
         </div>
