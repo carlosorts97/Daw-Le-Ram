@@ -41,9 +41,8 @@ class UserController extends AbstractController
     public function showArticles()
     {
         $id = $this->getUser();
-        $articles= 0;
-        $i=0;
         $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findBy(['user'=>$id]);
+<<<<<<< HEAD
         /*
         foreach ($sizes as $size) {
             $articles[$i] = $this->getDoctrine()->getRepository(Articles::class)->find($size->getArticle());
@@ -56,17 +55,21 @@ class UserController extends AbstractController
         $articles = $this->getDoctrine()->getRepository(Articles::class)->findBy(['idArticle'=>$sizes]);
            */
         return $this->render('user/showArticles.html.twig', [
+=======
+        $articles = $this->getDoctrine()->getRepository(Articles::class)->findBy(['idArticle'=>$sizes]);
+        return $this->render('user/showArticles.html.twig', [
+>>>>>>> borja
             'sizes' => $sizes
         ]);
     }
     /**
-     * @Route("/user/articles/{idSize}", name="app_showArticle")
+     * @Route("/user/articles/{id}/{category}", name="app_showArticle")
      */
-    public function showArticle($idSize)
+    public function showArticle($id)
     {
-        $id = $this->getUser();
+        $idUser = $this->getUser();
 
-        $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy(['article'=>$idSize, 'user'=>$id]);
+        $sizes = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy(['article'=>$id, 'user'=>$idUser]);
 
         $articles = $this->getDoctrine()->getRepository(Articles::class)->find($sizes->getArticle());
 

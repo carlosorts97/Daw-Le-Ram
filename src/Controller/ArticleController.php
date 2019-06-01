@@ -156,7 +156,11 @@ class ArticleController extends AbstractController
         ]);
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         //crear form
-        $form = $this->createForm(NewSizeType::class, $article);
+        if($a->getCategory()->getIdCategory()!=4) {
+            $form = $this->createForm(NewSizeType::class, $article);
+        }else{
+            $form = $this->createForm(NewSneakerType::class, $article);
+        }
         //handle the request
         $form->handleRequest($Request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -164,31 +168,18 @@ class ArticleController extends AbstractController
 
             $article->setUser($idUser);
 
-            $stock = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
-                'size' => $article->getSize(),
-                'article' => $this->getDoctrine()->getRepository(Articles::class)->find($id),
-            ]);
-
-
-            $stockUpdate = $stock->getStock();
-
-            $stockUpdate->AddStock();
-
-            $article->setStock($stockUpdate);
-
 
 
             $article = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
-            $entityManager->persist($stock);
             $entityManager->flush();
             return $this->redirectToRoute('app_homepage');
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
-            'form' => $form->createView(), 'article'=>$a
+            'form' => $form->createView(), 'art'=>$a
         ]);
     }
 
