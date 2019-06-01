@@ -14,7 +14,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-class NewSizeType extends AbstractType
+class NewSneakerType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -35,10 +35,14 @@ class NewSizeType extends AbstractType
             ])
             ->add('size', ChoiceType::class,[
                 'choices' => [
-                    'XL' => "XL",
-                    'L' => "L",
-                    'M' => "M",
-                    'S' => "S"
+                    '38' => "38",
+                    '39' => "39",
+                    '40' => "40",
+                    '41' => "41",
+                    '42' => "42",
+                    '43' => "43",
+                    '44' => "44",
+                    '45' => "45"
                 ],
 
             ])

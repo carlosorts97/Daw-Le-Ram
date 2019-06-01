@@ -2,8 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: linux
+<<<<<<< HEAD
+ * Date: 29/05/19
+ * Time: 16:46
+=======
  * Date: 30/05/19
  * Time: 17:29
+>>>>>>> 0ea765e0e07b935b7d383fbba73eaa7aec564837
  */
 
 namespace App\Controller;
@@ -37,6 +42,7 @@ class SearcherController extends Controller
             $articulos[$i]=$a->getName();
             $i=$i+1;
         }
+
         return $this->render('users/search.html.twig', ['articles'=>$articles]);
     }
     /**
@@ -63,6 +69,7 @@ class SearcherController extends Controller
     {
 
         return $this->render('search/searcher.html.twig');
+
     }
 
 }

@@ -3,13 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use App\Entity\CreditCard;
 use App\Entity\Sells;
 use App\Entity\Sizes;
+use App\Form\CardType;
 use App\Form\EditUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Tests\Extension\Core\Type\SubmitTypeTest;
+use Symfony\Component\Serializer\Encoder\DecoderInterface;
+use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
@@ -17,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
@@ -183,18 +186,36 @@ class UserController extends AbstractController
         return new JsonResponse($data, 200, [], true);
     }
     /**
-     * @Route("/city/{id?}", name="city_page", methods={"GET"})
+     * @Route("/user/card",name="app_addCard")
      */
-    public function citySingle(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $city = null;
+    public function addCard (Request $request){
+        $card=new CreditCard();
 
-        if ($id) {
-            $city = $em->getRepository(Cities::class)->findOneBy(['id' => $id]);
+        //create the form
+        $form=$this->createForm(CardType::class,$card);
+
+        $form->handleRequest($request);
+        $error=$form->getErrors();
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $card->setUser($this->getUser());
+            //handle the entities
+            dump($card);
+            $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->persist($card);
+            $entityManager->flush();
+            $this->addFlash(
+                'succes', 'User2 created'
+            );
+            return $this->redirectToRoute('app_homepage');
         }
-        return $this->render('home/city.html.twig', [
-            'city'  =>      $city
+
+        //render the form
+        return $this->render('user/cardform.html.twig',[
+            'error'=>$error,
+            'form'=>$form->createView()
         ]);
+
     }
 }

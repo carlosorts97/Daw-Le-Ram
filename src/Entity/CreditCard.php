@@ -59,6 +59,16 @@ class CreditCard
     private $money;
 
     /**
+     * CreditCard constructor.
+     * @param string $owner
+     * @param float $money
+     */
+    public function __construct()
+    {
+        $this->money = 1000000000;
+    }
+
+    /**
      * @return float
      */
     public function getMoney(): float
@@ -142,4 +152,3 @@ class CreditCard
 
 
 }
-

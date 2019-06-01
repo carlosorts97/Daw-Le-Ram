@@ -12,6 +12,7 @@ use App\Form\NewArticleType;
 use App\Entity\Articles;
 use App\Entity\User;
 use App\Form\NewSizeType;
+use App\Form\NewSneakerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +47,7 @@ class ArticleController extends AbstractController
      */
     public function uploadA3rticle(Request $Request, $id)
     {
+
         $article = new Sizes();
         $idUser= $this->getUser();
         $stockUpdate = null;
@@ -53,6 +55,7 @@ class ArticleController extends AbstractController
 
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
 
+<<<<<<< HEAD
         //crear form
         $form = $this->createForm(NewSizeType::class, $article);
         //handle the request
@@ -60,6 +63,21 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
 
+=======
+        if($a->getCategory()->getIdCategory()!=4) {
+            $form = $this->createForm(NewSizeType::class, $article);
+        }else{
+            $form = $this->createForm(NewSneakerType::class, $article);
+        }
+        //handle the request
+        $form->handleRequest($Request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $article->setArticle($a);
+            $size=$Request->query->get('size');
+            dump($size);
+            die();
+>>>>>>> borja
             $article->setUser($idUser);
 
             $stock= $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
@@ -93,11 +111,18 @@ class ArticleController extends AbstractController
         }
         //render the form
         return $this->render('article/upProduct.html.twig', [
+<<<<<<< HEAD
             'form' => $form->createView(), 'article'=>$a
         ]);
     }
 
 
+=======
+             'art'=>$a, 'form' => $form->createView()
+        ]);
+    }
+
+>>>>>>> borja
     /**
      * @Route("/editUploadedArticle/{id}", name="app_editUpArt")
      */

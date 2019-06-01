@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<<<<<<< HEAD
     <div class="col-lg-4 box-form margin_scroll">
         <h2>Register, please</h2>
+=======
+    <div class="col-lg-4 box-form ">
+        <h2>Edit user</h2>
+>>>>>>> borja
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" class="btn btn-success" value="Register">
+        <input type="submit" class="btn btn-success" value="Edit">
         {{ form_errors(form) }}
         {{ form_end(form) }}
+<<<<<<< HEAD
         {%   if article.category.idCategory !=4 %}
             <select id="mySelect">
                 <option>XL</option>
@@ -30,5 +36,7 @@
                 <option>46</option>
             </select>
         {% endif %}
+=======
+>>>>>>> borja
     </div>
 {% endblock %}

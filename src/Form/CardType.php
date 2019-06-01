@@ -2,19 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: linux
- * Date: 20/05/19
- * Time: 18:18
+ * Date: 01/06/19
+ * Time: 10:43
  */
 
 namespace App\Form;
 
-
-use App\Entity\Sizes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-class NewSizeType extends AbstractType
+use App\Entity\CreditCard;
+
+class CardType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -29,18 +28,21 @@ class NewSizeType extends AbstractType
         // this validation, set the 'required' attribute to 'false':
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
-            ->add('price', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Precio'
+            ->add('owner', null, [
+                'attr' => ['autofocus' => true, 'class'=>'form-control'],
+                'label' => 'Titular',
             ])
-            ->add('size', ChoiceType::class,[
-                'choices' => [
-                    'XL' => "XL",
-                    'L' => "L",
-                    'M' => "M",
-                    'S' => "S"
-                ],
-
+            ->add('number', null, [
+                'attr' => ['autofocus' => true, 'class'=>'form-control'],
+                'label' => 'Numero',
+            ])
+            ->add('cvv', null, [
+                'attr' => ['rows' => 20, 'class'=>'form-control'],
+                'label' => 'CVV'
+            ])
+            ->add('endDate', null, [
+                'attr' => ['rows' => 20, 'class'=>'form-control'],
+                'label' => 'end date'
             ])
 
         ;
@@ -51,7 +53,7 @@ class NewSizeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Sizes::class,
+            'data_class' => CreditCard::class,
         ]);
     }
 }
