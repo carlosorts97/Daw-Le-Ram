@@ -154,7 +154,7 @@
     <div class="row mb-5">
         {% for stH in stHype %}
             <a href="{{ path('app_showArticle',{'id': stH.id_article, 'category':stH.category} )}}" class="col-12 col-sm-6 col-md-4 col-lg-4 text-center link">
-                <img src="/Daw-Le-Ram/public/img/{{ stH.image }}"  class="article_image_sm" alt="Imagen del producto">
+                <img src="/Daw-Le-Ram/public/img/article/{{ stH.image }}"  class="article_image_sm" alt="Imagen del producto">
                     <p class="text-left">{{ stH.name }}</p>
                     <p class="text-left">{{ stH.price | number_format}}€</p>
             </a>
