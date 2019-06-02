@@ -17,7 +17,7 @@
     <p id="demo"></p>
 {% endblock %}
 {% block javascripts %}
-
+    {{ parent() }}
     <script>
         function autocomplete(inp, arr) {
             /*the autocomplete function takes two arguments,
