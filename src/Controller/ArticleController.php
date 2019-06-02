@@ -110,15 +110,16 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/editUploadedArticle/{id}", name="app_editUpArt")
+     * @Route("/editUploadedArticle/{id}/{size}", name="app_editUpArt")
      */
-    public function editArticle(Request $Request, $id)
+    public function editArticle(Request $Request, $id, $size)
     {
 
         $idUser = $this->getUser();
         $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
-            'user' =>$idUser
+            'user' =>$idUser,
+            'size' => $size
         ]);
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         //crear form
@@ -242,7 +243,6 @@ class ArticleController extends AbstractController
             $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
             $sell->setTotalPaid($size->getPrice()+10);
             dump($sell);
-die();
             /*adding new info of user, removing size and creating sell*/
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->remove($size);
