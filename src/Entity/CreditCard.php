@@ -20,21 +20,10 @@ class CreditCard
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCreditcard;
-
-    /**
-     * @return int
-     */
-    public function getIdCreditcard(): int
+    
+    public function getIdCreditcard(): ?int
     {
         return $this->idCreditcard;
-    }
-
-    /**
-     * @param int $idCreditcard
-     */
-    public function setIdCreditcard(int $idCreditcard): void
-    {
-        $this->idCreditcard = $idCreditcard;
     }
 
     /**
