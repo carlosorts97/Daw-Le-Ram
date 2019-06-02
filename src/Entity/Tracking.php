@@ -47,15 +47,6 @@ class Tracking
      * @ORM\Column(name="devolution_date", type="date", nullable=true)
      */
     private $devolutionDate;
-    /**
-     * @var \Sells
-     *
-     * @ORM\ManyToOne(targetEntity="Sells")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="sell", referencedColumnName="id_sell")
-     * })
-     */
-    private $sell;
 
     public function getIdTracking(): ?int
     {
@@ -104,15 +95,6 @@ class Tracking
     public function setDevolutionDate(?\DateTimeInterface $devolutionDate): self
     {
         $this->devolutionDate = $devolutionDate;
-        return $this;
-    }
-    public function getSell(): ?Sells
-    {
-        return $this->sell;
-    }
-    public function setSell(?Sells $sell): self
-    {
-        $this->sell = $sell;
         return $this;
     }
 }
