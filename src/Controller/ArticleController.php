@@ -193,6 +193,7 @@ class ArticleController extends AbstractController
         }
         return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
     }
+    
     /**
      * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
@@ -202,33 +203,25 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
-
         $card= new CreditCard();
         $form=$this->createForm(CardType::class, $card);
-        //create the form
         $cards=$user->getCard();
-
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         $size = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
             'user' =>$seller,
             'size' =>$size
         ]);
-
         if(empty($cards[0])!=false){
-
             $form=$this->createForm(CardType::class, $cards[0]);
         }
         $form1=$this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form1->handleRequest($request);
         $error=$form->getErrors();
-
-<<<<<<< HEAD
         if($form->isSubmitted() && $form->isValid()){
             /*Removing stock*/
             $size->getStock()->RemoveStock();
-
             /*catching info for sell type*/
             $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
             $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
@@ -241,23 +234,15 @@ class ArticleController extends AbstractController
             $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
             $sell->setTotalPaid($size->getPrice()+10);
             dump($sell);
-            die();
             /*adding new info of user, removing size and creating sell*/
-=======
-        if($form->isSubmitted() && $form->isValid() && $form1->isValid()){
->>>>>>> dc170a669cf11e005812f2d9ca499d22fc94dbe9
             $entityManager=$this->getDoctrine()->getManager();
+            $entityManager->remove($size);
+            $entityManager->persist($sell);
             $entityManager->persist($user);
             $entityManager->persist($card);
             $entityManager->flush();
-            return $this->render('article/buyArticle.html.twig',[
-                'error'=>$error,
-                'form'=>$form->createView(),
-                'formU'=>$form1->createView(),
-                'article'=>$article
-            ]);
+            return $this->redirectToRoute('article/successfulBought.html.twig');
         }
-
         //render the form
         return $this->render('article/buyArticle.html.twig',[
             'error'=>$error,
@@ -265,7 +250,6 @@ class ArticleController extends AbstractController
             'formU'=>$form1->createView(),
             'size' =>$size
         ]);
-
     }
 
     /**
