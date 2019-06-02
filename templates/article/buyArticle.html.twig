@@ -3,13 +3,13 @@
     {{ parent() }}
 {% endblock %}
 {% block javascripts %}
+    {{ parent() }}
 <script>
      function Iva (a) {
         value=(0.21)*a;
-        document.getElementById('IVA').innerHTML=value;
-        document.getElementById('total').innerHTML=Math.round((value+a+10)*100)/100;
+        document.getElementById('IVA').innerHTML="  IVA: "+value+"€";
+        document.getElementById('total').innerHTML=Math.round((value+a+10)*100)/100+"€";
     }
-
      Iva({{ size.price }});
 </script>
 {% endblock %}
@@ -18,7 +18,7 @@
     <div class="container margin_scroll">
         <div class="row justify-content-center">
             <div class="col-lg-6 box-form">
-                <h2 class="text-center"></h2>
+                <h2 class="mb-4">Compra</h2>
                 <div class="row">
                     <div class="col-lg-12">
                         {{ form_row(formU.address) }}
@@ -48,18 +48,30 @@
                         {{ form_row(form.endDate) }}
                     </div>
                 </div>
-
-
-                <input type="submit" class="btn btn-navegar mt-4" value="Register">
+                <input type="submit" class="btn btn-navegar mt-4 col-12" value="Comprar">
                 {{ form_errors(form) }}
                 {{ form_end(form) }}
+<<<<<<< HEAD
 
+=======
+>>>>>>> carlos
             </div>
         </div>
+        <div class="container border-top border-bottom mb-5">
+            <div class="row justify-content-center">
+                <div class="text-center">
+                    <h3>Articulo: <span class="text-secondary">{{ size.article.name }}</span>  Talla:<span class="text-secondary">{{ size.size }}</span></h3>
+                </div>
 
-        <div id="IVA"></div>
-        <div>Envio: 10€</div>
-        <div id="total"></div>
-
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div>
+                    <h5 id="IVA"></h5>
+                    <h5>Envio: 10€</h5>
+                </div>
+                <h5 class="align-self-center">Total:</h5>
+                <h2 class="align-self-center" id="total"> </h2>
+            </div>
+        </div>
     </div>
 {% endblock %}
