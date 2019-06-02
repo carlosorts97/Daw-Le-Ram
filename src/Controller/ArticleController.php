@@ -244,6 +244,7 @@ class ArticleController extends AbstractController
             $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
             $sell->setTotalPaid($size->getPrice()+10);
             dump($sell);
+            die();
             /*adding new info of user, removing size and creating sell*/
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->remove($size);
