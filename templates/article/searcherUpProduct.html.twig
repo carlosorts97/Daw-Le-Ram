@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h2>Vende con nosotros</h2>
+    <h2 class="margin_scroll">Vende con nosotros</h2>
     <h2>Vende con nosotros</h2>
     <h2>Vende con nosotros</h2>
     <h2>Vende con nosotros</h2>
     <h2>Vende con nosotros</h2>
     <div>Te invitamos a vender lo que quieras con nosotros. Busca entre los artículos para ver que puedes vender.</div>
-<div class="col-12 col-md-6 col-lg-6 text-center justify-content-center" id="buscador">
-    <form autocomplete="off" action="{{ path('posearch') }}">
-        <div class="autocomplete" style="width:300px;">
-            <input id="myInput2" type="text" name="myCountry" placeholder="Country">
-        </div>
-        <input type="submit">
+<div class="col-12 col-md-6 col-lg-6 text-center justify-content-center">
+    <form autocomplete="off" action="{{ path('posearch') }}" class="buscador form-inline mt-2 mt-md-0 justify-content-center">
+        <input id="myInput2" class="form-control col-12 col-md-6" type="text" placeholder="Search" name="buscador">
+        <button type="submit" class="btn btn-default btn-lg col-12 col-md-1 lupa">
+            <img src="/img/lupa.png" height="26px" alt="Lupa">
+        </button>
     </form>
 </div>
     <p id="demo"></p>

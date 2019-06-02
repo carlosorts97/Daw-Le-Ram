@@ -203,38 +203,22 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
-
         $cards=$user->getCard();
-
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         $size = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
             'user' =>$seller,
             'size' =>$size
-
         ]);
-
-<<<<<<< HEAD
-
-        if(empty($cards[0])!=false){
-            $card=$cards[0];
-
-        }else{
-            $card= new CreditCard();
-        }
-=======
         $card= new CreditCard();
->>>>>>> carlos
         $form=$this->createForm(CardType::class, $card);
         $form1=$this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form1->handleRequest($request);
         $error=$form->getErrors();
-
         if($form->isSubmitted() && $form->isValid()){
             /*Removing stock*/
             $size->getStock()->RemoveStock();
-
             /*catching info for sell type*/
             $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
             $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
@@ -252,8 +236,6 @@ class ArticleController extends AbstractController
             $total = $total + ($total * 21)/100;
             $total = $total + 10;
             $sell->setTotalPaid($total);
-            dump($sell);
-            dump($total);
             /*adding new info of user, removing size and creating sell*/
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->remove($size);
@@ -263,7 +245,6 @@ class ArticleController extends AbstractController
             $entityManager->flush();
             return $this->render('article/successfulBought.html.twig');
         }
-
         //render the form
         return $this->render('article/buyArticle.html.twig',[
             'error'=>$error,
@@ -271,7 +252,6 @@ class ArticleController extends AbstractController
             'formU'=>$form1->createView(),
             'size' =>$size
         ]);
-
     }
 
     /**
