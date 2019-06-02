@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% block body %}
-
-    <div class="container margin_scroll mt-5">
-        <h2>Vende con nosotros</h2>
+        <h2 class="margin_scroll">Vende con nosotros</h2>
         <div>Te invitamos a vender lo que quieras con nosotros. Busca entre los artículos para ver que puedes vender.</div>
         <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center">
             <form autocomplete="off" action="{{ path('posearch') }}" class="buscador form-inline mt-2 mt-md-0 justify-content-center">
@@ -12,12 +13,11 @@
                 </button>
             </form>
         </div>
-    </div>
 
     <p id="demo"></p>
 {% endblock %}
 {% block javascripts %}
-    {{ parent() }}
+
     <script>
         function autocomplete(inp, arr) {
             /*the autocomplete function takes two arguments,
