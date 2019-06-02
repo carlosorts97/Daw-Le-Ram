@@ -194,7 +194,6 @@ class ArticleController extends AbstractController
         return $this->render('article/searcherUpProduct.html.twig', ['arts'=>$articles]);
     }
 
-
     /**
      * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
@@ -215,6 +214,7 @@ class ArticleController extends AbstractController
 
         ]);
 
+<<<<<<< HEAD
 
         if(empty($cards[0])!=false){
             $card=$cards[0];
@@ -222,6 +222,9 @@ class ArticleController extends AbstractController
         }else{
             $card= new CreditCard();
         }
+=======
+        $card= new CreditCard();
+>>>>>>> carlos
         $form=$this->createForm(CardType::class, $card);
         $form1=$this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -242,10 +245,15 @@ class ArticleController extends AbstractController
             /*puting info on sell*/
             $sell->setSeller($seller);
             $sell->setBuyer($buyer);
+            $card->setUser($buyer);
             $sell->setSize($size->getSize());
-            $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
-            $sell->setTotalPaid($size->getPrice()+10);
+            $sell->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
+            $total=$size->getprice();
+            $total = $total + ($total * 21)/100;
+            $total = $total + 10;
+            $sell->setTotalPaid($total);
             dump($sell);
+            dump($total);
             /*adding new info of user, removing size and creating sell*/
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->remove($size);
@@ -253,7 +261,7 @@ class ArticleController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($card);
             $entityManager->flush();
-            return $this->redirectToRoute('article/successfulBought.html.twig');
+            return $this->render('article/successfulBought.html.twig');
         }
 
         //render the form
@@ -265,6 +273,7 @@ class ArticleController extends AbstractController
         ]);
 
     }
+
     /**
      * @return string
      */

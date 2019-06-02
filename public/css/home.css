@@ -19,6 +19,15 @@ body {
     min-height: 100%;
 }
 
+.article_image_sm{
+    width: 180px;
+}
+
+.article_image_lg{
+    width: 300px;
+}
+
+
 .link{
     color: black;
 }

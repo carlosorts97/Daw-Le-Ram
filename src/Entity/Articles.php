@@ -157,7 +157,11 @@ class Articles
 
     public function getImage()
     {
+<<<<<<< HEAD
         return $this->image;
+=======
+        return new File('/img'.'/'.$this->image);
+>>>>>>> carlos
     }
     public function setImage($image): self
     {
@@ -166,6 +170,5 @@ class Articles
 
         return $this;
     }
-
 
 }

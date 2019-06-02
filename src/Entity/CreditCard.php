@@ -13,11 +13,34 @@ use Doctrine\ORM\Mapping as ORM;
 class CreditCard
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_credit_card", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCreditcard;
+
+    /**
+     * @return int
+     */
+    public function getIdCreditcard(): int
+    {
+        return $this->idCreditcard;
+    }
+
+    /**
+     * @param int $idCreditcard
+     */
+    public function setIdCreditcard(int $idCreditcard): void
+    {
+        $this->idCreditcard = $idCreditcard;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="number", type="string", length=12, nullable=false, options={"fixed"=true})
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $number;
 
@@ -51,38 +74,6 @@ class CreditCard
      * })
      */
     private $user;
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="money",nullable=false)
-     */
-    private $money;
-
-    /**
-     * CreditCard constructor.
-     * @param string $owner
-     * @param float $money
-     */
-    public function __construct()
-    {
-        $this->money = 1000000000;
-    }
-
-    /**
-     * @return float
-     */
-    public function getMoney(): float
-    {
-        return $this->money;
-    }
-
-    /**
-     * @param float $money
-     */
-    public function setMoney(float $money): void
-    {
-        $this->money = 100000000;
-    }
 
     /**
      * @return string
@@ -99,8 +90,6 @@ class CreditCard
     {
         $this->number = $number;
     }
-
-
 
     public function getCvv(): ?string
     {
