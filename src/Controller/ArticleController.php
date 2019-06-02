@@ -110,15 +110,16 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/editUploadedArticle/{id}", name="app_editUpArt")
+     * @Route("/editUploadedArticle/{id}/{size}", name="app_editUpArt")
      */
-    public function editArticle(Request $Request, $id)
+    public function editArticle(Request $Request, $id, $size)
     {
 
         $idUser = $this->getUser();
         $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
-            'user' =>$idUser
+            'user' =>$idUser,
+            'size' => $size
         ]);
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         //crear form
@@ -132,7 +133,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
             $article->setUser($idUser);
-            
+
             $stock = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
                 'size' => $article->getSize(),
                 'article' => $this->getDoctrine()->getRepository(Articles::class)->find($id),
@@ -180,20 +181,24 @@ class ArticleController extends AbstractController
 
 
     }
+
+
     /**
      * @Route("/loadSearcher", name="loadSearch")
      */
     public function searchear()
     {
-        $i=0;
+
         $articles=$this->getDoctrine()->getRepository(Articles::class)->findAll();
-        foreach ($articles as $a){
-            $articulos[$i]=$a->getName();
-            $i=$i+1;
-        }
+
         return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
     }
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
     /**
      * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
@@ -205,13 +210,23 @@ class ArticleController extends AbstractController
         $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
         $card= new CreditCard();
         $form=$this->createForm(CardType::class, $card);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
         $cards=$user->getCard();
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         $size = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
             'user' =>$seller,
             'size' =>$size
+
         ]);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
         if(empty($cards[0])!=false){
             $form=$this->createForm(CardType::class, $cards[0]);
         }
@@ -219,6 +234,10 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
         $form1->handleRequest($request);
         $error=$form->getErrors();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
         if($form->isSubmitted() && $form->isValid()){
             /*Removing stock*/
             $size->getStock()->RemoveStock();
@@ -227,6 +246,8 @@ class ArticleController extends AbstractController
             $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
             //Create sells
             $sell=new Sells();
+            $fileName = $this->generateUniqueFileName();
+            $sell->setIdSell($fileName);
             /*puting info on sell*/
             $sell->setSeller($seller);
             $sell->setBuyer($buyer);
@@ -251,46 +272,14 @@ class ArticleController extends AbstractController
             'size' =>$size
         ]);
     }
-
     /**
-     * @Route("article/buy/{id}/{size}/{seller}", name="app_articleSize_buy")
+     * @return string
      */
-    public function buyArticle($id, $size, $seller)
+    private function generateUniqueFileName()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
-            'article' => $id,
-            'user' =>$seller,
-            'size' =>$size
-
-        ]);
-        $article->getStock()->RemoveStock();
-
-        $idUser=$this->getUser();
-        $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
-        $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
-        $cards=$buyer->getCard();
-        if($cards == null){
-            return $this->redirectToRoute('app_putCard');
-        }
-
-        //Create sells
-        $sell=new Sells();
-        $sell->setSeller($seller);
-        $sell->setBuyer($buyer);
-        $sell->setSize($size);
-        $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
-        $sell->setTotalPaid($article->getPrice()+10);
-
-
-
-        $em->remove($article);
-        $em->persist($sell);
-        $em->flush();
-
-        return $this->redirectToRoute('app_homepage');
-
+        // md5() reduces the similarity of the file names generated by
+        // uniqid(), which is based on timestamps
+        return md5(uniqid());
     }
 
 }
