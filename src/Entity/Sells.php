@@ -81,13 +81,20 @@ class Sells
     public function __construct()
     {
         $this->article = new \Doctrine\Common\Collections\ArrayCollection();
+        $fechaActual= new \DateTime();
+        $this->setSellDate($fechaActual);
     }
 
     public function getIdSell(): ?int
     {
         return $this->idSell;
     }
+    public function setIdSell(?int $idSell): self
+    {
+        $this->idSell = $idSell;
 
+        return $this;
+    }
     public function getSellDate(): ?\DateTimeInterface
     {
         return $this->sellDate;
