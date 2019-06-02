@@ -57,7 +57,7 @@
                     {% if app.user is null %}
                         <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_login')}}">Comprar</a>
                     {% else %}
-                    <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_articleSize_buy',{'id': article_S[0].id_article, 'size':article_S[0].size, 'seller':article_S[0].user} )}}">Comprar</a>
+                    <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_checkout',{'id': article_S[0].id_article, 'size':article_S[0].size, 'seller':article_S[0].user} )}}">Comprar</a>
                     {% endif %}
                 </div>
                 <div class="col-lg-12 text-center mb-5">
@@ -113,7 +113,7 @@
                     {% if app.user is null %}
                         <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_login')}}">Comprar</a>
                     {% else %}
-                        <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_articleSize_buy',{'id': article_M[0].id_article, 'size':article_M[0].size, 'seller':article_M[0].user} )}}">Comprar</a>
+                        <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_checkout',{'id': article_M[0].id_article, 'size':article_M[0].size, 'seller':article_M[0].user} )}}">Comprar</a>
                     {% endif %}
                 </div>
                 <div class="col-lg-12 text-center mb-5">
@@ -169,7 +169,7 @@
                     {% if app.user is null %}
                         <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_login')}}">Comprar</a>
                     {% else %}
-                        <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_articleSize_buy',{'id': article_L[0].id_article, 'size':article_L[0].size, 'seller':article_L[0].user} )}}">Comprar</a>
+                        <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_checkout',{'id': article_L[0].id_article, 'size':article_L[0].size, 'seller':article_L[0].user} )}}">Comprar</a>
                     {% endif %}
                 </div>
                 <div class="col-lg-12 text-center mb-5">
@@ -225,7 +225,7 @@
                     {% if app.user is null %}
                         <a class="btn btn-navegar col-lg-10 mb-2" href="{{ path('app_login')}}">Comprar</a>
                     {% else %}
-                        <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_articleSize_buy',{'id': article_XL[0].id_article, 'size':article_XL[0].size, 'seller':article_XL[0].user} )}}">Comprar</a>
+                        <a class="btn btn-navegar col-lg-10 mb-2 " href="{{ path('app_checkout',{'id': article_XL[0].id_article, 'size':article_XL[0].size, 'seller':article_XL[0].user} )}}">Comprar</a>
                     {% endif %}
                 </div>
                 <div class="col-lg-12 text-center mb-5">

@@ -42,7 +42,7 @@ class CardType extends AbstractType
             ])
             ->add('endDate', null, [
                 'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'end date'
+                'label' => 'Fecha de caducidad'
             ])
 
         ;

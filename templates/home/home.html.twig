@@ -54,7 +54,6 @@
             </div>
         </div>
 
-
         <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
             <div id="categorias" class="col-12 col-md-3 col-lg-3 signika text-left">
 
@@ -149,6 +148,7 @@
             <h5>Most Hyped</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
+            <a href="{{ path('app_articleslist_hype',{'category': 1, 'brand':0} )}}" class="btn">Ver más</a>
         </div>
     </div>
     <div class="row mb-5">
@@ -168,6 +168,7 @@
             <h5>Last arrivals</h5>
         </div>
         <div class="col-lg-6 text-right signika">
+            <a href="{{ path('app_articleslist_date',{'category': 1, 'brand':0} )}}" class="btn">Ver más</a>
         </div>
     </div>
     <div class="row mb-5">
@@ -184,17 +185,12 @@
 
 <div class="container sneakers_cont">
 
-    <div class="row articulos">
-        <div class="col-lg-12 text-left signika">
-            <h4>Most Hyped</h4>
-        </div>
-    </div>
-
     <div class="row divisor">
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-left signika">
             <h5>Articulos</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
+            <a href="{{ path('app_articleslist_hype',{'category': 4, 'brand':0} )}}" class="btn">Ver más</a>
         </div>
     </div>
 
@@ -214,7 +210,7 @@
             <h5>Last arrivals</h5>
         </div>
         <div class="col-6 col-sm-6 col-md-6 col-lg-6 text-right signika">
-            <h5>Ver más</h5>
+            <a href="{{ path('app_articleslist_hype',{'category': 4, 'brand':0} )}}" class="btn">Ver más</a>
         </div>
     </div>
     <div class="row mb-5">
