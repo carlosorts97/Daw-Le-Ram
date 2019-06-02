@@ -20,7 +20,7 @@ class CreditCard
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCreditcard;
-    
+
     public function getIdCreditcard(): ?int
     {
         return $this->idCreditcard;
