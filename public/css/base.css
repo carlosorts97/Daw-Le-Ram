@@ -252,8 +252,6 @@ form{
     color: #ffffff;
 }
 
-footer a{ font-size: 26px}
-
 @media only screen and (max-width: 600px) {
     .dropdown-item {
         font-size:12px;
