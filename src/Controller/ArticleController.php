@@ -194,19 +194,27 @@ class ArticleController extends AbstractController
         return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
     }
     /**
-     * @Route("/article/checkout",name="app_checkout")
+     * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
-    public function editAccount (Request $request){
-        $id = $this->getUser();
-        if(empty($id)){
+    public function editAccount (Request $request, $id, $size, $seller){
+        $idUser = $this->getUser();
+        if(empty($idUser)){
             return $this->redirectToRoute('app_login');
         }
-        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
 
         $card= new CreditCard();
         $form=$this->createForm(CardType::class, $card);
         //create the form
         $cards=$user->getCard();
+
+        $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
+        $size = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
+            'article' => $id,
+            'user' =>$seller,
+            'size' =>$size
+
+        ]);
 
         if(empty($cards[0])!=false){
 
@@ -220,18 +228,26 @@ class ArticleController extends AbstractController
         if($form->isSubmitted() && $form->isValid() && $form1->isValid()){
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $entityManager->persist($card);
             $entityManager->flush();
-            return $this->redirectToRoute('app_homepage');
+            return $this->render('article/buyArticle.html.twig',[
+                'error'=>$error,
+                'form'=>$form->createView(),
+                'formU'=>$form1->createView(),
+                'article'=>$article
+            ]);
         }
 
         //render the form
         return $this->render('article/buyArticle.html.twig',[
             'error'=>$error,
             'form'=>$form->createView(),
-            'formU'=>$form1->createView()
+            'formU'=>$form1->createView(),
+            'size' =>$size
         ]);
 
     }
+
     /**
      * @Route("article/buy/{id}/{size}/{seller}", name="app_articleSize_buy")
      */
