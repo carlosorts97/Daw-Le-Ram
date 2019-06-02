@@ -216,9 +216,6 @@ class UserController extends AbstractController
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($card);
             $entityManager->flush();
-            $this->addFlash(
-                'succes', 'User2 created'
-            );
             return $this->redirectToRoute('app_homepage');
         }
 
