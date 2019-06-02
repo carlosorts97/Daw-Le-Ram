@@ -25,82 +25,82 @@ class UserType extends AbstractType
         $builder
             ->add('username', TextType::class,[
                 'required' => 'required',
-                'label' => ' ',
+                'label' => 'Username',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Username'
                 ]
             ])
             ->add('name', TextType::class,[
                 'required' => 'required',
-                'label' => ' ',
+                'label' => 'Nombre',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Name'
                 ]
             ])
             ->add('surname', TextType::class,[
                 'required' => 'required',
-                'label' => ' ',
+                'label' => 'Apellidos',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Surname'
                 ]
             ])
             ->add('email', EmailType::class,[
                 'required' =>'required',
-                'label' => ' ',
+                'label' => 'Email',
                 'attr' =>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'Email@email'
                 ]
             ])
             ->add('telephone', TextType::class,[
                 'required' => 'required',
-                'label' => ' ',
+                'label' => 'Teléfono',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'telephone'
                 ]
             ])
             ->add('city', EntityType::class, [
                 'class' => Cities::class,
-                'label' => ' ',
+                'label' => 'Ciudad',
                 'choice_label' => 'name',
                     'attr'=>[
-                        'class' => 'form-control',
+                        'class' => 'form-control mb-2',
                     ]]
             )
 
             ->add('address', TextType::class,[
                 'required' => 'required',
-                'label' => ' ',
+                'label' => 'Dirección',
                 'attr'=>[
-                    'class' => 'form-control',
+                    'class' => 'form-control mb-2',
                     'placeholder' => 'address'
                 ]
             ])
             ->add('birthday', DateType::class, [
                 'widget' => 'single_text',
-                'label' => ' ',
+                'label' => 'Fecha de cumpleaños',
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
                 'attr'=>[
-                    'class' => 'form-control'
+                    'class' => 'form-control mb-2'
                 ]
             ])
             ->add('plainpassword',RepeatedType::class,[
                 'type' => PasswordType::class,
                 'required' => 'required',
                 'first_options' =>[
-                    'label' => ' ',
+                    'label' => 'Contraseña',
                     'attr' =>[
-                        'class' => 'form-control',
+                        'class' => 'form-control mb-2',
                         'placeholder' => 'Password'
                     ]
                 ],
                 'second_options' => [
-                    'label' => ' ',
+                    'label' => 'Repite contraseña',
                     'attr' => [
                         'class' => 'form-control',
                         'placeholder' => 'Repeat password'

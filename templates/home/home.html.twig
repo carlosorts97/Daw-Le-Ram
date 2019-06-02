@@ -41,7 +41,7 @@
                                 <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="">Admin</a>
+                                    <a class="dropdown-item" href="{{ path('app_admin') }}">Admin</a>
                                 {% endif %}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">
@@ -118,7 +118,14 @@
             </div>
 
             <div class="col-12 col-md-3 col-lg-3 mt-2 text-right">
-                <a class="btn btn-success btn-lg signika col12" href="{{ path('app_createArticle') }}">Venta</a>
+                {% if app.user == null %}
+                    <a class="btn btn-lg btn-success signika" href="{{ path('app_login') }}">Venta</a>
+                {% else %}
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a class="btn btn-sm btn-success signika" href="{{ path('app_createArticle') }}">Subir articulo</a>
+                    {% endif %}
+                    <a class="btn btn-sm btn-success signika" href="{{ path('loadSearch') }}">Venta</a>
+                {% endif %}
             </div>
         </div>
 

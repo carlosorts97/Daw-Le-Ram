@@ -37,23 +37,30 @@ class NewArticleType extends AbstractType
         $builder
             ->add('name', null, [
                 'attr' => ['autofocus' => true, 'class'=>'form-control'],
-                'label' => 'Name',
+                'label' => 'Nombre',
             ])
             ->add('description', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Description'
+                'attr' => ['rows' => 10, 'class'=>'form-control'],
+                'label' => 'Descripción'
             ])
             ->add('category', EntityType::class, [
+                'attr' => ['autofocus' => true, 'class'=>'form-control'],
+                'label' => 'Categoria',
                 'class' => Category::class,
                 'choice_label' => 'name'])
             ->add('brand', EntityType::class, [
+                'attr' => ['autofocus' => true, 'class'=>'form-control'],
+                'label' => 'Marca',
                 'class' => Brands::class,
                 'choice_label' => 'name'])
             ->add('retailDate', DateType::class,[
-                'label' => 'Retail date',
+                'attr' => ['class'=>'mb-2'],
+                'label' => 'Fecha de lanzamiento',
                 'required' => false
             ])
-            ->add('image',FileType::class)
+            ->add('image',FileType::class,[
+                'label' => 'Imagen'
+            ])
         ;
 
     }
