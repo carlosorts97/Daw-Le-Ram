@@ -35,11 +35,14 @@ class NewSneakerType extends AbstractType
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
             ->add('price', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
+                'attr' => ['rows' => 20, 'class'=>'form-control mb-3'],
                 'label' => 'Precio'
             ])
             ->add('size', ChoiceType::class,[
+                'attr' => ['class'=>'form-control'],
                 'choices' => [
+                    '36' => "36",
+                    '37' => "37",
                     '38' => "38",
                     '39' => "39",
                     '40' => "40",
@@ -47,7 +50,8 @@ class NewSneakerType extends AbstractType
                     '42' => "42",
                     '43' => "43",
                     '44' => "44",
-                    '45' => "45"
+                    '45' => "45",
+                    '46' => "46"
                 ],
 
             ])

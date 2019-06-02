@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<<<<<<< HEAD
 
     <div class="col-lg-4 box-form ">
         <h2>{{ art.name }}</h2>
@@ -9,5 +10,20 @@
         <input type="submit" class="btn btn-success" value="Edit">
         {{ form_errors(form) }}
         {{ form_end(form) }}
+=======
+    <div class="container box-form text-left margin_scroll justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 form-group justify-content-center">
+                <h3 class="mb-5">{{ art.name }}</h3>
+                {{ art.image }}
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-navegar mt-3 col-lg-12" value="Subir">
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+>>>>>>> carlos
     </div>
+
 {% endblock %}

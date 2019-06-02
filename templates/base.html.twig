@@ -23,13 +23,13 @@
                 </button>
             </div>
 
-            <div class="col-4 col-md-6 col-lg-6 text-center link">
-                <h3 class="offset-2 offset-md-4 offset-lg-5 logo text-center">
+            <div class="col-4 col-sm-6 col-md-6 col-lg-6 text-center link">
+                <h3 class="offset-2 offset-sm-6 offset-md-6 offset-lg-6 logo text-center">
                     <a href="{{ path('app_homepage') }}">Le-Ram</a>
                 </h3>
             </div>
 
-            <div id="login" class="col-3 col-md-3 col-lg-3 text-center align-self-start pr-3">
+            <div id="login" class="col-3 col-md-3 col-lg-3 text-right align-self-start pr-3">
                 {% if app.user == null %}
                     <a class="login col-12" href="{{ path('app_login') }}">Login</a>
                     <a class="login col-12" href="{{ path('app_register') }}">Register</a>
@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="">Admin</a>
+                                    <a class="dropdown-item" href="{{ path('app_admin') }}">Admin</a>
                                 {% endif %}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">

@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="col-lg-4 box-form ">
-        <h2>Register, please</h2>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" class="btn btn-success" value="Edit">
-        {{ form_errors(form) }}
-        {{ form_end(form) }}
+
+    <div class="container box-form margin_scroll text-center">
+        <h2>Editar mi cuenta</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-5 text-left">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-success col-12 mt-2" value="Editar">
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
 {% endblock %}

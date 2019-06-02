@@ -30,16 +30,19 @@ class NewSizeType extends AbstractType
         // $builder->add('title', null, ['required' => false, ...]);
         $builder
             ->add('price', null, [
-                'attr' => ['rows' => 20, 'class'=>'form-control'],
-                'label' => 'Precio'
+                'attr' => ['rows' => 20, 'class'=>'form-control mb-3'],
+                'label' => 'Precio:'
             ])
             ->add('size', ChoiceType::class,[
+                'attr' => ['class'=>'form-control'],
+                'label' => 'Talla:',
                 'choices' => [
                     'XL' => "XL",
                     'L' => "L",
                     'M' => "M",
                     'S' => "S"
                 ],
+
 
             ])
 
