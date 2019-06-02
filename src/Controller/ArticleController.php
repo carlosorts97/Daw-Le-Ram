@@ -193,12 +193,7 @@ class ArticleController extends AbstractController
 
         return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
     }
-<<<<<<< HEAD
-    
-=======
 
-
->>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
     /**
      * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
@@ -208,13 +203,9 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
-        $card= new CreditCard();
-        $form=$this->createForm(CardType::class, $card);
-<<<<<<< HEAD
-=======
 
->>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
         $cards=$user->getCard();
+
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         $size = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
@@ -222,25 +213,18 @@ class ArticleController extends AbstractController
             'size' =>$size
 
         ]);
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
-        if(empty($cards[0])!=false){
-            $form=$this->createForm(CardType::class, $cards[0]);
-        }
+        $card= new CreditCard();
+        $form=$this->createForm(CardType::class, $card);
         $form1=$this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form1->handleRequest($request);
         $error=$form->getErrors();
-<<<<<<< HEAD
-=======
 
->>>>>>> 236baf738cd8624afd15cc5dbfc2eec626e04eb7
         if($form->isSubmitted() && $form->isValid()){
             /*Removing stock*/
             $size->getStock()->RemoveStock();
+
             /*catching info for sell type*/
             $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
             $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
@@ -251,10 +235,15 @@ class ArticleController extends AbstractController
             /*puting info on sell*/
             $sell->setSeller($seller);
             $sell->setBuyer($buyer);
+            $card->setUser($buyer);
             $sell->setSize($size->getSize());
-            $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
-            $sell->setTotalPaid($size->getPrice()+10);
+            $sell->setArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
+            $total=$size->getprice();
+            $total = $total + ($total * 21)/100;
+            $total = $total + 10;
+            $sell->setTotalPaid($total);
             dump($sell);
+            dump($total);
             /*adding new info of user, removing size and creating sell*/
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->remove($size);
@@ -262,8 +251,9 @@ class ArticleController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($card);
             $entityManager->flush();
-            return $this->redirectToRoute('article/successfulBought.html.twig');
+            return $this->render('article/successfulBought.html.twig');
         }
+
         //render the form
         return $this->render('article/buyArticle.html.twig',[
             'error'=>$error,
@@ -271,7 +261,9 @@ class ArticleController extends AbstractController
             'formU'=>$form1->createView(),
             'size' =>$size
         ]);
+
     }
+
     /**
      * @return string
      */

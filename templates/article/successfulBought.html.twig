@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container box-form margin_scroll text-center">
+        <div class="row justify-content-center">
+            <div class="col-6 text-left">
+                <h2>La compra se ha realizado correctamente ...</h2>
+            </div>
+        </div>
+        <a href="{{ path('app_homepage') }}" class="btn btn-success col-6 text-light">Seguir comprando</a>
+    </div>
+{% endblock %}
