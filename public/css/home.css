@@ -238,4 +238,6 @@ form{
         margin-right: 10px;}
     .btn-secondary .fa-user {display: none;}
     .logo a{font-size: 12px; width: 30px}
+    footer h6{
+        font-size:12px}
 }
