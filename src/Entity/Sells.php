@@ -17,7 +17,7 @@ class Sells
     /**
      * @var int
      *
-     * @ORM\Column(name="id_sell", type="integer", nullable=false, options={"unsigned"=true})
+     * @ORM\Column(name="id_sell", type="string", nullable=false, options={"unsigned"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -85,11 +85,11 @@ class Sells
         $this->setSellDate($fechaActual);
     }
 
-    public function getIdSell(): ?int
+    public function getIdSell(): ?string
     {
         return $this->idSell;
     }
-    public function setIdSell(?int $idSell): self
+    public function setIdSell(?string $idSell): self
     {
         $this->idSell = $idSell;
 
