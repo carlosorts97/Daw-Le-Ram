@@ -49,8 +49,6 @@ class AdminController extends AbstractController
         $user=new User();
         $city = new Cities();
         $country = new Countries();
-        $country->setName("EEESSSSPAÑA");
-        $city->setName("Castelldefels");
         $city->setCountry($country);
 
         //create the form
