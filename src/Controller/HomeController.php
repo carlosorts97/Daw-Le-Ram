@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Brands;
 use App\Entity\Category;
 use App\Entity\Cities;
 use App\Entity\Countries;
@@ -176,35 +177,35 @@ class HomeController extends AbstractController
      * @Route("/hola/brand",name="app_brandInsert")
      */
     public function InsertIntobrand (){
-        $category=new Category();
+        $category=new Brands();
         $category->setName("Supreme");
-        $category2=new Category();
+        $category2=new Brands();
         $category2->setName("Palace");
-        $category3=new Category();
+        $category3=new Brands();
         $category3->setName("Nike");
-        $category4=new Category();
+        $category4=new Brands();
         $category4->setName("Adidas");
-        $category5=new Category();
+        $category5=new Brands();
         $category5->setName("Off-White");
-        $category6=new Category();
+        $category6=new Brands();
         $category6->setName("Heron preston");
-        $category7=new Category();
+        $category7=new Brands();
         $category7->setName("Kith");
-        $category8=new Category();
+        $category8=new Brands();
         $category8->setName("Kaws");
-        $category9=new Category();
+        $category9=new Brands();
         $category9->setName("Yeezy");
-        $category10=new Category();
+        $category10=new Brands();
         $category10->setName("Air jordan");
-        $category11=new Category();
+        $category11=new Brands();
         $category11->setName("Stussy");
-        $category12=new Category();
+        $category12=new Brands();
         $category12->setName("Bape");
-        $category13=new Category();
+        $category13=new Brands();
         $category13->setName("Billionaire boys club");
-        $category14=new Category();
+        $category14=new Brands();
         $category14->setName("Gucci");
-        $category15=new Category();
+        $category15=new Brands();
         $category15->setName("Louis vuitton");
 
         dump($category);
@@ -222,7 +223,6 @@ class HomeController extends AbstractController
         dump($category13);
         dump($category14);
         dump($category15);
-        die();
 
         $entityManager=$this->getDoctrine()->getManager();
         $entityManager->persist($category);
@@ -230,6 +230,16 @@ class HomeController extends AbstractController
         $entityManager->persist($category3);
         $entityManager->persist($category4);
         $entityManager->persist($category5);
+        $entityManager->persist($category6);
+        $entityManager->persist($category7);
+        $entityManager->persist($category8);
+        $entityManager->persist($category9);
+        $entityManager->persist($category10);
+        $entityManager->persist($category11);
+        $entityManager->persist($category12);
+        $entityManager->persist($category13);
+        $entityManager->persist($category14);
+        $entityManager->persist($category15);
         $entityManager->flush();
 
 
