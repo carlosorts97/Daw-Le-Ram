@@ -191,7 +191,7 @@ class ArticleController extends AbstractController
 
         $articles=$this->getDoctrine()->getRepository(Articles::class)->findAll();
 
-        return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
+        return $this->render('article/searcherUpProduct.html.twig', ['arts'=>$articles]);
     }
 
 
@@ -205,9 +205,6 @@ class ArticleController extends AbstractController
         }
         $user = $this->getDoctrine()->getRepository(User::class)->find($idUser);
 
-        $card= new CreditCard();
-        $form=$this->createForm(CardType::class, $card);
-
         $cards=$user->getCard();
 
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
@@ -220,9 +217,12 @@ class ArticleController extends AbstractController
 
 
         if(empty($cards[0])!=false){
+            $card=$cards[0];
 
-            $form=$this->createForm(CardType::class, $cards[0]);
+        }else{
+            $card= new CreditCard();
         }
+        $form=$this->createForm(CardType::class, $card);
         $form1=$this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $form1->handleRequest($request);

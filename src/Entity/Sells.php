@@ -137,11 +137,9 @@ class Sells
         return $this->article;
     }
 
-    public function addArticle(Articles $article): self
+    public function setArticle(?Articles $article): self
     {
-        if (!$this->article->contains($article)) {
-            $this->article[] = $article;
-        }
+        $this->article = $article;
 
         return $this;
     }

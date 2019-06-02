@@ -157,7 +157,7 @@ class Articles
 
     public function getImage()
     {
-        return new File('/public/img'.'/'.$this->image);
+        return $this->image;
     }
     public function setImage($image): self
     {
