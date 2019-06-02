@@ -110,16 +110,15 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/editUploadedArticle/{id}/{size}", name="app_editUpArt")
+     * @Route("/editUploadedArticle/{id}", name="app_editUpArt")
      */
-    public function editArticle(Request $Request, $id, $size)
+    public function editArticle(Request $Request, $id)
     {
 
         $idUser = $this->getUser();
         $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
             'article' => $id,
-            'user' =>$idUser,
-            'size' => $size
+            'user' =>$idUser
         ]);
         $a=$this->getDoctrine()->getRepository(Articles::class)->find($id);
         //crear form
@@ -181,20 +180,19 @@ class ArticleController extends AbstractController
 
 
     }
-
-
     /**
      * @Route("/loadSearcher", name="loadSearch")
      */
     public function searchear()
     {
-
+        $i=0;
         $articles=$this->getDoctrine()->getRepository(Articles::class)->findAll();
-
+        foreach ($articles as $a){
+            $articulos[$i]=$a->getName();
+            $i=$i+1;
+        }
         return $this->render('article/searcherUpProduct.html.twig', ['articles'=>$articles]);
     }
-
-
     /**
      * @Route("/article/checkout/{id}/{size}/{seller}", name="app_checkout")
      */
@@ -207,7 +205,7 @@ class ArticleController extends AbstractController
 
         $card= new CreditCard();
         $form=$this->createForm(CardType::class, $card);
-
+        //create the form
         $cards=$user->getCard();
 
         $article=$this->getDoctrine()->getRepository(Articles::class)->find($id);
@@ -215,9 +213,7 @@ class ArticleController extends AbstractController
             'article' => $id,
             'user' =>$seller,
             'size' =>$size
-
         ]);
-
 
         if(empty($cards[0])!=false){
 
@@ -228,30 +224,17 @@ class ArticleController extends AbstractController
         $form1->handleRequest($request);
         $error=$form->getErrors();
 
-        if($form->isSubmitted() && $form->isValid()){
-            /*Removing stock*/
-            $size->getStock()->RemoveStock();
-
-            /*catching info for sell type*/
-            $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
-            $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
-            //Create sells
-            $sell=new Sells();
-            /*puting info on sell*/
-            $sell->setSeller($seller);
-            $sell->setBuyer($buyer);
-            $sell->setSize($size->getSize());
-            $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
-            $sell->setTotalPaid($size->getPrice()+10);
-            dump($sell);
-            /*adding new info of user, removing size and creating sell*/
+        if($form->isSubmitted() && $form->isValid() && $form1->isValid()){
             $entityManager=$this->getDoctrine()->getManager();
-            $entityManager->remove($size);
-            $entityManager->persist($sell);
             $entityManager->persist($user);
             $entityManager->persist($card);
             $entityManager->flush();
-            return $this->redirectToRoute('article/successfulBought.html.twig');
+            return $this->render('article/buyArticle.html.twig',[
+                'error'=>$error,
+                'form'=>$form->createView(),
+                'formU'=>$form1->createView(),
+                'article'=>$article
+            ]);
         }
 
         //render the form
@@ -264,5 +247,45 @@ class ArticleController extends AbstractController
 
     }
 
+    /**
+     * @Route("article/buy/{id}/{size}/{seller}", name="app_articleSize_buy")
+     */
+    public function buyArticle($id, $size, $seller)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $this->getDoctrine()->getRepository(Sizes::class)->findOneBy([
+            'article' => $id,
+            'user' =>$seller,
+            'size' =>$size
+
+        ]);
+        $article->getStock()->RemoveStock();
+
+        $idUser=$this->getUser();
+        $seller= $this->getDoctrine()->getRepository(User::class)->find($seller);
+        $buyer= $this->getDoctrine()->getRepository(User::class)->find($idUser);
+        $cards=$buyer->getCard();
+        if($cards == null){
+            return $this->redirectToRoute('app_putCard');
+        }
+
+        //Create sells
+        $sell=new Sells();
+        $sell->setSeller($seller);
+        $sell->setBuyer($buyer);
+        $sell->setSize($size);
+        $sell->addArticle($this->getDoctrine()->getRepository(Articles::class)->find($id));
+        $sell->setTotalPaid($article->getPrice()+10);
+
+
+
+        $em->remove($article);
+        $em->persist($sell);
+        $em->flush();
+
+        return $this->redirectToRoute('app_homepage');
+
+    }
 
 }

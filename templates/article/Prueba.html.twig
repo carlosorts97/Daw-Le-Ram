@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Le-Ram</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="cabecera navbar-expand-lg">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 align-self-center text-left">
+                <h3 class="icono">Le-Ram</h3>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-4 text-center">
+                <h3 class="logo">Compra.Vende.<br/>Authentic streetwear.</h3>
+            </div>
+            <div id="login" class="col-3 col-md-3 col-lg-3 text-right align-self-start pr-3">
+                {% if app.user == null %}
+                    <a class="login col-12" href="{{ path('app_login') }}">Login</a>
+                    <a class="login col-12" href="{{ path('app_register') }}">Register</a>
+                {% else %}
+                    <ul class="hidden-md-down login">
+                        <li class="dropdown">
+                            <a class="btn btn-secondary btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user">  </span> {{ app.user.username }}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="login">
+                                <a class="dropdown-item" href="{{ path('app_showOrders') }}">Mis pedidos</a>
+                                <a class="dropdown-item" href="{{ path('app_showArticles') }}">Mis Articulos</a>
+                                <a class="dropdown-item" href="{{ path('app_editAccount') }}">Editar Cuenta</a>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ path('app_admin') }}">Admin</a>
+                                {% endif %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                    Cerrar Sesion <em class="fa fa-times" aria-hidden="true"></em>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row text-center align-items-end collapse navbar-collapse" id="toggle-menu">
+            <div id="categorias" class="col-12 col-md-3 col-lg-3 signika text-left">
+
+                <div class="dropdown show">
+                    <a class="btn btn-lg btn-navegar signika dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                    </a>
+                    <div class="dropdown-menu dropright border-right" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Camisetas</a>
+                        <div class="dropdown-menu dropleft border-right">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 1, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sudaderas</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 2, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Pantalones</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 3, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Sneakers</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':3} )}}">Nike</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':10} )}}">Air Jordan</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':4} )}}">Adidas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':9} )}}">Yeezy</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 4, 'brand':99} )}}">Resto de marcas</a>
+                        </div>
+                        <a class="dropdown-submenu dropdown-item dropdown-toggle btn" href="#">Accesorios</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':0} )}}">Todas</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':1} )}}">Supreme</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':5} )}}">Off-white</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':14} )}}">Gucci</a>
+                            <a class="dropdown-item btn" href="{{ path('app_listArticles',{'category': 5, 'brand':66} )}}">Resto de marcas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-6 text-center justify-content-center">
+                {{
+                render(
+                    controller('App\\Controller\\SearcherController::searchAction')
+                )
+                }}
+            </div>
+
+            <div class="col-12 col-md-3 col-lg-3 mt-2 text-right">
+                {% if app.user == null %}
+                    <a class="btn btn-lg btn-success signika" href="{{ path('app_login') }}">Venta</a>
+                {% else %}
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <a class="btn btn-sm btn-success signika" href="{{ path('app_createArticle') }}">Subir articulo</a>
+                    {% endif %}
+                    <a class="btn btn-sm btn-success signika" href="{{ path('loadSearch') }}">Venta</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<div class="col-12 col-md-6 col-lg-6 text-center justify-content-center margin_scroll_lg" id="buscador">
+    <form autocomplete="off" action="{{ path('posearch') }}">
+        <div class="autocomplete" style="width:300px;">
+            <input id="myInput" type="text" name="myCountry" placeholder="Country">
+        </div>
+        <input type="submit">
+    </form>
+</div>
+<p id="demo"></p>
+
+<script>
+    function autocomplete(inp, arr) {
+        /*the autocomplete function takes two arguments,
+        the text field element and an array of possible autocompleted values:*/
+        var currentFocus;
+        /*execute a function when someone writes in the text field:*/
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            /*append the DIV element as a child of the autocomplete container:*/
+            this.parentNode.appendChild(a);
+            /*for each item in the array...*/
+            for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    /*create a DIV element for each matching element:*/
+                    b = document.createElement("DIV");
+                    /*make the matching letters bold:*/
+                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                    b.innerHTML += arr[i].substr(val.length);
+                    /*insert a input field that will hold the current array item's value:*/
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    /*execute a function when someone clicks on the item value (DIV element):*/
+                    b.addEventListener("click", function(e) {
+                        /*insert the value for the autocomplete text field:*/
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        /*close the list of autocompleted values,
+                        (or any other open lists of autocompleted values:*/
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                }
+            }
+        });
+        /*execute a function presses a key on the keyboard:*/
+        inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (x) x[currentFocus].click();
+                }
+            }
+        });
+        function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+        }
+        function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("autocomplete-active");
+            }
+        }
+        function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+                if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
+            }
+        }
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+    }
+
+    /*An array containing all the country names in the world:*/
+    var articles = [];
+    i = 0;
+    {%  for article in articles%}
+
+    articles[i]="{{ article.name }}";
+    i = i +1;
+    {%  endfor%}
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("myInput"), articles);
+    fLen = articles.length;
+    text = "";
+    for (i = 0; i < fLen; i++) {
+        text += articles[i] + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    /*Funcion para cargar el header pequeño al recargar*/
+    $(window).ready(function(){
+        if ($(window).width() <= 1050 || $(window).scrollTop() >= 40){
+            $(".cabecera").addClass("active fixed-top");
+            $(".container-fluid:first").addClass("margin_scroll-sm");
+            $(".btn-success").addClass("btn-sm");
+            $(".btn-navegar").addClass("btn-sm");
+            $(".logo").text("Le-Ram");
+            Fcabecera=1;
+        } else{
+            $(".cabecera").removeClass("active fixed-top");
+            $(".container-fluid:first").removeClass("margin_scroll-sm");
+            $(".btn-success").removeClass("btn-sm");
+            $(".btn-navegar").removeClass("btn-sm");
+            $(".logo").text("");
+            $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
+            Fcabecera=0;
+        }
+    });
+    /*Funcion para controlar el aspecto del header al hacer scroll hacia abajo*/
+    var Fcabecera = 0;
+    $(function() {
+        $(window).on("scroll", function() {
+            if($(window).scrollTop() >= 40 && Fcabecera==0 ) {
+                $(".cabecera").addClass("active fixed-top");
+                $(".container-fluid:first").addClass("margin_scroll-lg");
+                $(".logo").text("Le-Ram");
+            } else if($(window).scrollTop() < 40 && Fcabecera==0) {
+                //remove the background property so it comes transparent again (defined in your css)
+                $(".cabecera").removeClass("active fixed-top");
+                $(".container-fluid:first").removeClass("margin_scroll-lg");
+                $(".logo").text("");
+                $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
+            }
+        });
+    });
+    /*Funcion para controlar el aspecto del header dependiendo del tamaño del dispositivo*/
+    $(window).resize(function(){
+        if ($(window).width() <= 1050){
+            $(".cabecera").addClass("active fixed-top");
+            $(".container-fluid:first").addClass("margin_scroll-sm");
+            $(".btn-success").addClass("btn-sm");
+            $(".btn-navegar").addClass("btn-sm");
+            $(".logo").text("Le-Ram");
+            Fcabecera=1;
+        } else if($(window).width() > 1050 && $(window).scrollTop() < 40){
+            $(".cabecera").removeClass("active fixed-top");
+            $(".container-fluid:first").removeClass("margin_scroll-sm");
+            $(".btn-success").removeClass("btn-sm");
+            $(".btn-navegar").removeClass("btn-sm");
+            $(".logo").text("");
+            $(".logo").append("Compra.Vende.<br/>Authentic streetwear.");
+            Fcabecera=0;
+        }
+    });
+
+</script>
+<script>
+    /*SLIDE DEL BOTON STREETWEAR Y SNEAKERS*/
+    $( "#streetwear" ).click(function () {
+        if ( $( ".streetwear" ).is( ":hidden" ) ) {
+            $( ".streetwear" ).slideDown( "slow" );
+            $( ".sneakers_cont" ).hide();
+            $("#streetwear").addClass("subline_select")
+            $("#sneakers").removeClass("subline_select")
+        }
+    });
+
+    $( "#sneakers" ).click(function () {
+        if ( $( ".sneakers_cont" ).is( ":hidden" ) ) {
+            $( ".sneakers_cont" ).slideDown( "slow" );
+            $( ".streetwear" ).hide();
+            $("#sneakers").addClass("subline_select")
+            $("#streetwear").removeClass("subline_select")
+        }
+    });
+
+    /*SUB-MENU Categorias*/
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+
+
+        $(this).parents('dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass("show");
+        });
+
+        return false;
+    });
+</script>
+</body>
+</html>
