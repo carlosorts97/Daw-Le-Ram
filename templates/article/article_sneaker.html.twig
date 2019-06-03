@@ -676,7 +676,7 @@
         <div class="row mt-3 mb-5">
             {% for r in recommended %}
             <a href="{{ path('app_showArticle',{'id': r.id_article, 'category':r.category} )}}" class="btn col-lg-4 text-center">
-                <img src="/Daw-Le-Ram/public/img/article/{{ article.image }}"  class="article_image_sm" alt="Imagen del producto">
+                <img src="/Daw-Le-Ram/public/img/article/{{ r.image }}"  class="article_image_sm" alt="Imagen del producto">
                 <p class="text-left">{{ r.name }}</p>
                 <p class="text-left">{{ r.price | number_format }}€</p>
             </a>
